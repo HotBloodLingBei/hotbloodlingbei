@@ -10,8 +10,21 @@ export default {
   name: 'App',
   components: {
     HelloWorld
-  }
+  },
+  data (){
+    return {
+      result:{},
+
+
+    }
+  },
+    methods:{
+      function1(){
+
+      }
+    }
 }
+
 </script>
 
 <style>

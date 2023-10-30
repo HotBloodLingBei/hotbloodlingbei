@@ -13,15 +13,31 @@ export default {
   },
   data (){
     return {
-      result:{},
-
-
+      result:{
+          mbtiType:{
+              mbtiType:'',
+              firstProp:'',
+              secondProp:"",
+              thirdProp:"",
+              forthProp:""
+          },
+          description:"",
+          suggestion:{
+              job:'',
+              spouse:'',
+              other:"",
+              picture:{meme:"srcpath",
+                  profilepicture:"",
+              },
+              backgroundColor:"#ffffff",
+          }
+      }
     }
   },
     methods:{
-      function1(){
+        getMeme(){
 
-      }
+        }
     }
 }
 

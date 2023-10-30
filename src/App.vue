@@ -31,13 +31,13 @@ export default {
               },
               backgroundColor:"#ffffff",
           }
-      }
+      },
+
     }
   },
     methods:{
-        getMeme(){
-
-        }
+        //形成得到result
+        //
     }
 }
 

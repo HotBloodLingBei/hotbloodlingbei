@@ -14,7 +14,7 @@ export default {
   data (){
     return {
       result:{
-          mbtiType:{
+          mbti:{
               mbtiType:'',
               firstProp:'',
               secondProp:"",
@@ -47,20 +47,35 @@ export default {
               wechat: '',
             }
           }
+
       }
     }
   },
     methods:{
-        getMeme(){
-
+        //计算firstPropValue
+        calculateFirstProp(){
+          if(this.result.mbtiType.firstPropValue>=0){
+              this.$data.result.mbtiType.mbti[0]='i'
+          }else this.$data.result.mbtiType.mbti[0]='e'
         },
-
-        //Method to submit user information
-        submitUserInfo(){
-            //Send user information to backend
-            //Get result from backend
-            //this.result = result
-        }
+        //计算secondPropValue
+        calculateSecondProp(){
+          if(this.result.mbtiType.secondPropValue>=0){
+              this.$data.result.mbtiType.mbti[1]='s'
+          }else this.$data.result.mbtiType.mbti[1]='n'
+        },
+        //计算thirdPropValue
+        calculateThirdProp(){
+            if(this.result.mbtiType.secondPropValue>=0){
+                this.$data.result.mbtiType.mbti[2]='f'
+            }else this.$data.result.mbtiType.mbti[2]='t'
+        },
+        //计算forthPropValue
+        calculateForthProp(){
+            if(this.result.mbtiType.secondPropValue>=0){
+                this.$data.result.mbtiType.mbti[3]='p'
+            }else this.$data.result.mbtiType.mbti[3]='j'
+        },
     }
 }
 

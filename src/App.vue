@@ -21,15 +21,31 @@ export default {
               thirdProp:"",
               forthProp:""
           },
+
           description:"",
+
           suggestion:{
               job:'',
               spouse:'',
               other:"",
-              picture:{meme:"srcpath",
-                  profilepicture:"",
+              picture:{
+                meme:"",
+                profilepicture:"",
               },
               backgroundColor:"#ffffff",
+          },
+
+          userInfo: {
+            age: '',
+            gender: '',
+            nickName: '',
+            mbtiType: '',
+            contactMethod: {
+              email: '',
+              phone: '',
+              qq: '',
+              wechat: '',
+            }
           }
       }
     }
@@ -37,6 +53,13 @@ export default {
     methods:{
         getMeme(){
 
+        },
+
+        //Method to submit user information
+        submitUserInfo(){
+            //Send user information to backend
+            //Get result from backend
+            //this.result = result
         }
     }
 }

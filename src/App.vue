@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <PageIndicator :currentPage="currentPage" @navigate="navigateToPage" /> <!-- 添加PageIndicator组件 -->
-    <MyFooter/>
+      <router-view/>
+      <MyFooter/>
   </div>
-<router-view/>
+
 </template>
 
 <script>

@@ -1,9 +1,5 @@
 <script>
-// import {defineComponent} from 'vue'
 
-// export default defineComponent({
-//     name: "RotationChart"
-// })
 export default {
     name:'rotationChart',
     components: {},
@@ -29,6 +25,7 @@ export default {
         MouseFun(type){// 停止定时器            // 重新执行定时器
             type=='移入'?clearTimeout(this.start):this.setTimeoFun()
         },
+        // 1500ms进行一次切换，1.5s后进行一次回调
         setTimeoFun(){
             this.start = setInterval(()=>{
                 this.NextFun()
@@ -44,7 +41,7 @@ export default {
                 }, 1200); // 节流间隔时间
             }
         },
-        // 上一张
+        // 上一张（如果不是第一张就--，是第一张就将ShowImg置为4即最后一张图片）
         PrevFun(){
             if(this.ShowImg!==0){
                 this.ShowImg--
@@ -52,7 +49,7 @@ export default {
                 this.ShowImg=this.imgList.length-1
             }
         },
-        // 下一张
+        // 下一张（如果不是最后一张就++，是最后一张就将ShowImg置为0即第一张图片）
         NextFun(){
             if(this.ShowImg!==this.imgList.length-1){
                 this.ShowImg++
@@ -67,8 +64,10 @@ export default {
 
 <template>
     <div id="app">
+<!--        确定鼠标移入时间和鼠标移出事件-->
         <div class="SwiperBox" @mouseenter="MouseFun('移入')" @mouseleave="MouseFun('移出')">
             <!-- 图片 -->
+<!--            有一个三元选择符-->
             <img :class="['imgCss',ShowImg==index?'ShowCss':'']"
                  :src="item.imgUrl" v-for="(item,index) in imgList" :key="index"/>
             <!-- 左箭头按钮 -->
@@ -174,4 +173,4 @@ export default {
     display: flex;
     justify-content: center;
 }
-</style>f
+</style>

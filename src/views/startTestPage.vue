@@ -1,13 +1,20 @@
 <script>
-import {defineComponent} from 'vue'
+import RotationChart from '../components/RotationChart.vue'
+import chooseTest from "@/components/chooseTest.vue";
+export default {
+    name: "startTestPage",
+    components:{
+      RotationChart,
+      chooseTest
+    }
+}
 
-export default defineComponent({
-    name: "startTestPage"
-})
 </script>
 
 <template>
 <div>开始测试</div>
+<RotationChart/>
+  <chooseTest/>
 </template>
 
 <style scoped>

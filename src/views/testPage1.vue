@@ -1,14 +1,14 @@
 <script>
-import {defineComponent} from 'vue'
 
-export default defineComponent({
+
+export default {
     name: "testPage1"
-})
+}
 </script>
 
 <template>
 
-    <div>开始测试</div>
+    <div>开始测试1</div>
 </template>
 
 <style scoped>

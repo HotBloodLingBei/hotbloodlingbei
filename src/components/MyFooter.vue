@@ -4,6 +4,7 @@
 
 <template>
   <footer>
+    <div class="footer">
     <div class="footer-content">
       <div class="basic-info">
         <!-- 网站基本信息 -->
@@ -20,10 +21,25 @@
         <p>&copy; 2023 Your Company. 版权所有。</p>
       </div>
     </div>
+    </div>
   </footer>
 </template>
 
-
 <style scoped>
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+}
 
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.basic-info, .author-info, .copyright-info {
+  flex: 1;
+}
 </style>

@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <PageIndicator :currentPage="currentPage" @navigate="navigateToPage" /> <!-- 添加PageIndicator组件 -->
+    <MyFooter/>
   </div>
 </template>
 
 <script>
 import PageIndicator from './components/PageIndicator.vue';
+import MyFooter from './components/MyFooter.vue';
 
 export default {
   name: 'App',
   components: {
     PageIndicator,
+    MyFooter
   },
   data (){
     return {

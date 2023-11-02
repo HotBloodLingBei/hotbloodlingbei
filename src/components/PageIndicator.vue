@@ -90,7 +90,7 @@ export default {
 }
 
 .indicator-item:hover {
-  background-color: dimgray;
+  background-color: gainsboro;
 }
 
 .active {

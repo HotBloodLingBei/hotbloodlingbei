@@ -1,15 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <PageIndicator :currentPage="currentPage" @navigate="navigateToPage" /> <!-- 添加PageIndicator组件 -->
+  </div>
 </template>
 
 <script>
+import PageIndicator from './components/PageIndicator.vue';
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    PageIndicator,
   },
   data (){
     return {
@@ -51,7 +53,7 @@ export default {
       }
     }
   },
-    methods:{
+  methods:{
         //计算firstPropValue
         calculateFirstProp(){
           if(this.result.mbtiType.firstPropValue>=0){
@@ -76,7 +78,7 @@ export default {
                 this.$data.result.mbtiType.mbti[3]='p'
             }else this.$data.result.mbtiType.mbti[3]='j'
         },
-    }
+    },
 }
 
 </script>

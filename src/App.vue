@@ -76,6 +76,7 @@ export default {
                 this.$data.result.mbtiType.mbti[3]='p'
             }else this.$data.result.mbtiType.mbti[3]='j'
         },
+
     }
 }
 

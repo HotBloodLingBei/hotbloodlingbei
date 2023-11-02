@@ -7,7 +7,7 @@ export default {
 </script>
 
 <template>
-    <div>开始测试</div>
+    <div>开始测试2</div>
 </template>
 
 <style scoped>

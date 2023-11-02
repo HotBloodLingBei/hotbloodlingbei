@@ -3,6 +3,7 @@
     <PageIndicator :currentPage="currentPage" @navigate="navigateToPage" /> <!-- 添加PageIndicator组件 -->
     <MyFooter/>
   </div>
+<router-view/>
 </template>
 
 <script>

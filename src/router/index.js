@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import startTest from '../views/startTestPage.vue'
+import startTestPage from '../views/startTestPage.vue'
 import mbtiInstruction from '../views/mbtiInstructionPage.vue'
 import test1 from '../views/testPage1.vue'
 import test2 from '../views/testPage2.vue'
@@ -10,8 +10,8 @@ import result from '../views/resultPage.vue'
 const routes = [
     {
         path: '/',   // 跳转路径
-        name: 'startTest',    // 名称
-        component: startTest  // 组件
+        name: 'startTestPage',    // 名称
+        component: startTestPage  // 组件
     },
     {
         path: '/mbtiInstructionPage',

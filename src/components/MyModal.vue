@@ -3,26 +3,27 @@
 </script>
 
 <template>
-  <div class="modal">
+  <div class="modal" v-show="showModal">
     <div class="modal-content">
       <h2>{{ title }}</h2>
       <p>{{ content }}</p>
-      <button @click="closeModal">关闭</button>
+      <button v-on:click="showModal = !showModal">关闭</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      showModal: true,
+    };
+  },
   props: {
     title: String,
     content: String,
   },
-  methods: {
-    closeModal() {
-      this.$emit('close'); // 触发一个自定义事件来关闭弹窗
-    },
-  },
+
 };
 </script>
 

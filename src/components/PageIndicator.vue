@@ -5,55 +5,61 @@
 <template>
   <div
       class="indicator-item"
-      :class="{ active: currentPage === 'home' }"
-      @click="goToPage('home')"
+      :class="{ active: currentPage === '/' }"
+      @click="navigateTo('/')"
   >
-    首页
+    开始测试
   </div>
   <div
       class="indicator-item"
-      :class="{ active: currentPage === 'test' }"
-      @click="goToPage('test')"
+      :class="{ active: currentPage === '/mbtiInstructionPage' }"
+      @click="navigateTo('/mbtiInstructionPage')"
   >
-    测试
+    MBTI说明
   </div>
   <div
       class="indicator-item"
-      :class="{ active: currentPage === 'result' }">
+      :class="{ active: currentPage === '/resultPage' }"
+      @click="showModal"
+  >
     结果
+    <MyModal
+        v-if="isModalVisible"
+        title="提示"
+        content="请先完成测试"
+        @close="closeModal">
+    </MyModal>
   </div>
 </template>
 
 <script>
-import Modal from "@/components/Modal.vue"; // 引入弹窗组件
+import MyModal from "@/components/MyModal.vue"; // 引入弹窗组件
 export default {
   components: {
-    Modal,
+    MyModal
   },
 
   data() {
     return {
-      currentPage: 'home' // 默认显示在首页
+      currentPage: '/', // 默认显示在首页
+      isModalVisible: false, // 控制弹窗是否显示
     };
   },
 
-  created() {
-    this.currentPage = this.getCurrentPage();
-  },
-
   methods: {
-    goToPage(page) {
-      this.currentPage = page;
-
-      // 根据当前页面跳转
-      if (page === 'home') {
-        this.$router.push('/');
-      } else if (page === 'test') {
-        this.$router.push('/test');
-      } else if (page === 'result') {
-        this.$router.push('/result');
-      }
+    navigateTo(path) {
+      this.currentPage = path;
+      this.$router.push(path);
     },
+
+    showModal() {
+      this.isModalVisible = true;
+    },
+
+    closeModal() {
+      this.isModalVisible = false;
+    },
+
   },
 };
 </script>

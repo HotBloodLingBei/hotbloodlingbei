@@ -3,6 +3,7 @@
 </script>
 
 <template>
+  <div class="page-indicator">
   <div
       class="indicator-item"
       :class="{ active: currentPage === '/' }"
@@ -29,6 +30,7 @@
         content="请先完成测试"
         @close="closeModal">
     </MyModal>
+  </div>
   </div>
 </template>
 

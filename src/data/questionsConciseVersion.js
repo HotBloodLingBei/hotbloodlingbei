@@ -1,16 +1,25 @@
-export default questionsConciseVersion;
-
-const questionsConciseVersion = [
-    {
-        question: 'You find it takes effort to introduce yourself to other people.',
-        options: [
-            {text: 'super agree', score: {I: 3, E: 0}},
-            {text: 'strongly agree', score: {I: 2, E: 0}},
-            {text: 'relatively agree', score: {I: 1, E: 0}},
-            {text: 'neutral', score: {I: 0, E: 0}},
-            {text: 'relatively disagree', score: {I: 0, E: 1}},
-            {text: 'strongly disagree', score: {I: 0, E: 2}},
-            {text: 'super disagree', score: {I: 0, E: 3}}
-        ]
-    }
-];
+export default {
+    optionScore:[
+        {text:'strongly agree', score:3},
+        {text: 'agree',score:2},
+        {text:'relatively agree', score:1},
+        {text:'neutral', score:0},
+        {text:'relatively disagree', score:-1},
+        {text: 'disagree',score: -2},
+        {text:'strongly disagree', score:-3},
+    ],
+    questionList:[
+        {
+            description: 'You find it takes effort to introduce yourself to other people.',
+            dimension:'I/E'
+        },
+        {
+            description: 'You find it takes effort to fall in love with other people.',
+            dimension:'I/E'
+        },
+        {
+            description: 'You find it takes effort to introduce yourself to other people.',
+            dimension:'I/E'
+        },
+    ]
+}

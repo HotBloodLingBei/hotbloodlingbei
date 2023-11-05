@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <PageIndicator :currentPage="currentPage" @navigate="navigateToPage" /> <!-- 添加PageIndicator组件 -->
+    <PageIndicator :currentPage="currentPage" @navigate="navigateToPage" />
+    <TestTips/>
       <router-view/>
       <MyFooter/>
   </div>
@@ -10,12 +11,14 @@
 <script>
 import PageIndicator from './components/PageIndicator.vue';
 import MyFooter from './components/MyFooter.vue';
+import TestTips from "@/components/TestTips.vue";
 
 export default {
   name: 'App',
   components: {
     PageIndicator,
-    MyFooter
+    MyFooter,
+    TestTips
   },
   data (){
     return {

@@ -77,6 +77,7 @@ export default {
   justify-content: space-around;
   padding: 20px;
   border-bottom: 1px solid #ccc;
+  z-index: 100;
 }
 
 .indicator-item {

@@ -29,7 +29,10 @@
 .footer {
   background-color: #333;
   color: #fff;
-  padding: 20px 0;
+  padding: 15px 0;
+  bottom: 0;
+  width: 100%;
+  position: absolute;
 }
 
 .footer-content {

@@ -75,18 +75,29 @@ export default {
   background-color: #fff;
   display: flex;
   justify-content: space-around;
-  padding: 10px;
+  padding: 20px;
   border-bottom: 1px solid #ccc;
+  z-index: 100;
 }
 
 .indicator-item {
   cursor: pointer;
   padding: 10px;
+  border-radius: 29px;
+  background-color: lightyellow;
+  transition: all 0.5s ease-in-out;
+  box-shadow:  5px 5px 10px #777777,
+  -5px -5px 10px #ffffff;
+}
+
+.indicator-item:hover {
+  background-color: gainsboro;
 }
 
 .active {
   font-weight: bold;
-  color: #007bff; /* 高亮颜色 */
+  color: #007bff;
+  background-color: burlywood;
 }
 
 </style>

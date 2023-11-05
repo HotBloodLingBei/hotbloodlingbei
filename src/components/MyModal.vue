@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div class="modal" v-show="showModal">
-    <div class="card1" v-on:click="showModal = !showModal">
+  <div class="modal" v-show="showModal" v-on:click="showModal = !showModal">
+    <div class="card1">
     <div class="modal-content">
       <p>{{ content }}</p>
     </div>

@@ -71,7 +71,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #fff;
+  background-color: #eee;
   display: flex;
   justify-content: space-around;
   padding: 20px;

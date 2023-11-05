@@ -67,6 +67,7 @@
   max-width: 300px; /* 设置最大宽度 */
   text-align: center;
   animation: slide-in 0.5s ease-out; /* 添加一个进入动画效果 */
+  border-radius: 15px;
   z-index: 9999;
 }
 

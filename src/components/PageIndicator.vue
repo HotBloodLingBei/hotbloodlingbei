@@ -26,7 +26,6 @@
     结果
     <MyModal
         v-if="isModalVisible"
-        title="提示"
         content="请先完成测试"
         @close="closeModal">
     </MyModal>
@@ -81,23 +80,73 @@ export default {
 }
 
 .indicator-item {
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 29px;
-  background-color: lightyellow;
-  transition: all 0.5s ease-in-out;
-  box-shadow:  5px 5px 10px #777777,
-  -5px -5px 10px #ffffff;
+  display: inline-block;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8;
+  border: 1px solid #e8e8e8;
+  box-shadow: 6px 6px 12px #c5c5c5,
+  -6px -6px 12px #ffffff;
+}
+
+.indicator-item:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+
+.indicator-item:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #009087;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
 }
 
 .indicator-item:hover {
-  background-color: gainsboro;
+  color: #ffffff;
+  border: 1px solid #009087;
+}
+
+.indicator-item:hover:before {
+  top: -35%;
+  background-color: #009087;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+
+.indicator-item:hover:after {
+  top: -45%;
+  background-color: #009087;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
 }
 
 .active {
-  font-weight: bold;
-  color: #007bff;
-  background-color: burlywood;
+  color: white;
+  background-color: #009087;
+  box-shadow: inset 4px 4px 12px darkslategray,
+  inset -4px -4px 12px slategrey;
 }
 
 </style>

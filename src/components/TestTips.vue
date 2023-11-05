@@ -68,7 +68,7 @@
   text-align: center;
   animation: slide-in 0.5s ease-out; /* 添加一个进入动画效果 */
   border-radius: 15px;
-  z-index: 9999;
+  z-index: 1;
 }
 
 .test-tips-title {

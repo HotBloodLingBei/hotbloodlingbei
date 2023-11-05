@@ -5,7 +5,7 @@ export default {
     name: "startTestPage",
     components:{
       RotationChart,
-      chooseTest
+      chooseTest,
     }
 }
 

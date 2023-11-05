@@ -1,5 +1,4 @@
-export default {
-    pic_link:{intjarchitect:"https://www.16personalities.com/static/images/personality-types/avatars/intj-architect.svg",
+export default {intjarchitect:"https://www.16personalities.com/static/images/personality-types/avatars/intj-architect.svg",
 intplogician:"https://www.16personalities.com/static/images/personality-types/avatars/intp-logician.svg",
 entjcommander:"https://www.16personalities.com/static/images/personality-types/avatars/entj-commander.svg",
 entpdebater:"https://www.16personalities.com/static/images/personality-types/avatars/entp-debater.svg",
@@ -14,5 +13,5 @@ infjmediator:"https://www.16personalities.com/static/images/personality-types/av
     istpvirtuoso:"https://www.16personalities.com/static/images/personality-types/avatars/istp-virtuoso.svg",
     isfpadventurer:"https://www.16personalities.com/static/images/personality-types/avatars/isfp-adventurer.svg",
     estpentrepreneur:"https://www.16personalities.com/static/images/personality-types/avatars/estp-entrepreneur.svg",
-    esfpentertainer:"https://www.16personalities.com/static/images/personality-types/avatars/esfp-entertainer.svg"}
+    esfpentertainer:"https://www.16personalities.com/static/images/personality-types/avatars/esfp-entertainer.svg"
 }

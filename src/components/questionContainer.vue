@@ -1,6 +1,7 @@
 <script>
-import store  from '@/store/store.js'
-import  questionsConciseVersion  from '@/data/questionsConciseVersion.js'
+import store from '@/store/store.js'
+import questionsConciseVersion from '@/data/questionsConciseVersion.js'
+
 export default {
   name: "questionContainer",
   // Vue 组件
@@ -9,23 +10,39 @@ export default {
       questionsConciseVersion,
       store,
       currentQuestionIndex: 0,
-
     };
+  },
+  computed:{
+    buttonStyle(value){
+      return (store.Scores[this.currentQuestionIndex].value===value)&&store.Scores[this.currentQuestionIndex].valid
+          ?'#00A97F':'#E1E1E1FF'
+    }
   },
   methods: {
     nextQuestion() {
       // 更新 currentQuestionIndex 的值
-      this.currentQuestionIndex += 1;
+      if(this.currentQuestionIndex < questionsConciseVersion.questionList.length-1){
+        this.currentQuestionIndex += 1;
+      }
     },
     lastQuestion() {
-      this.currentQuestionIndex -= 1;
+      if(this.currentQuestionIndex > 0){
+        this.currentQuestionIndex -= 1;
+      }
     },
     fetchChoice(choiceNum) {
-      let question = {
-        dimension: questionsConciseVersion.questionList[this.currentQuestionIndex].dimension,
-        value: questionsConciseVersion.optionScore[choiceNum].score
+      console.log(store.Scores)
+      store.Scores[this.currentQuestionIndex].value=questionsConciseVersion.optionScore[choiceNum].score
+      store.Scores[this.currentQuestionIndex].valid=1
+      if(this.currentQuestionIndex < questionsConciseVersion.questionList.length-1){
+        this.currentQuestionIndex += 1;
       }
-      store.Scores.push(question)
+    },
+    saveProgress(){
+
+    },
+    handleSubmit(){
+
     }
   }
 }
@@ -37,16 +54,32 @@ export default {
       {{questionsConciseVersion.questionList[this.currentQuestionIndex].description}}
     </div>
     <div>
-      <button @click="fetchChoice(0)" class = "button">{{ questionsConciseVersion.optionScore[0].text }}</button>
-      <button @click="fetchChoice(1)" class = "button">{{ questionsConciseVersion.optionScore[1].text }}</button>
-      <button @click="fetchChoice(2)" class = "button">{{ questionsConciseVersion.optionScore[2].text }}</button>
-      <button @click="fetchChoice(3)" class = "button">{{ questionsConciseVersion.optionScore[3].text }}</button>
-      <button @click="fetchChoice(4)" class = "button">{{ questionsConciseVersion.optionScore[4].text }}</button>
-      <button @click="fetchChoice(5)" class = "button">{{ questionsConciseVersion.optionScore[5].text }}</button>
-      <button @click="fetchChoice(6)" class = "button">{{ questionsConciseVersion.optionScore[6].text }}</button>
+      <button
+          :style="buttonStyle(questionsConciseVersion.optionScore[0].value)"
+          @click="fetchChoice(0)" class = "button">{{ questionsConciseVersion.optionScore[0].text }}</button>
+      <button
+          :style="buttonStyle(1)"
+          @click="fetchChoice(1)" class = "button">{{ questionsConciseVersion.optionScore[1].text }}</button>
+      <button
+          :style="buttonStyle(2)"
+          @click="fetchChoice(2)" class = "button">{{ questionsConciseVersion.optionScore[2].text }}</button>
+      <button
+          :style="buttonStyle(3)"
+          @click="fetchChoice(3)" class = "button">{{ questionsConciseVersion.optionScore[3].text }}</button>
+      <button
+          :style="buttonStyle(4)"
+          @click="fetchChoice(4)" class = "button">{{ questionsConciseVersion.optionScore[4].text }}</button>
+      <button
+          :style="buttonStyle(5)"
+          @click="fetchChoice(5)" class = "button">{{ questionsConciseVersion.optionScore[5].text }}</button>
+      <button
+          :style="buttonStyle(6)"
+          @click="fetchChoice(6)" class = "button">{{ questionsConciseVersion.optionScore[6].text }}</button>
     </div>
-    <button @click="lastQuestion">上一题</button>
-    <button @click="nextQuestion">下一题</button>
+    <button @click="lastQuestion" v-if="currentQuestionIndex > 0">上一题</button>
+    <button @click="saveProgress">保存进度</button>
+    <button @click="nextQuestion" v-if="currentQuestionIndex < questionsConciseVersion.questionList.length-1">下一题</button>
+    <button @click="handleSubmit" v-if="currentQuestionIndex === questionsConciseVersion.questionList.length-1">提交</button>
   </div>
 </template>
 

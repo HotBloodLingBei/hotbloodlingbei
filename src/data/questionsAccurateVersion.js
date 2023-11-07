@@ -13,5 +13,13 @@ export default {
             description: 'You find it takes effort to introduce yourself to other people.',
             dimension:'I/E'
         },
+        {
+            description: 'You find it takes effort to fall in love with other people.',
+            dimension:'I/E'
+        },
+        {
+            description: 'You find it takes effort to break your heart.',
+            dimension:'I/E'
+        },
     ]
 }

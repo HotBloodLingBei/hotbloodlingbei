@@ -121,10 +121,16 @@ button:hover span {
 </style>
 
 <script>
+import store  from '@/store/store.js'
+import  questionsConciseVersion  from '@/data/questionsConciseVersion.js'
+import questionsAccurateVersion from "@/data/questionsAccurateVersion";
 export default {
   name: "chooseTest",
   data() {
     return {
+      questionsConciseVersion,
+      questionsAccurateVersion,
+      store,
       image1Src: 'https://16personalitie.zbwlkj.cn/static/images/mbti/svg/protagonist.svg',
       image2Src: 'https://16personalitie.zbwlkj.cn/static/images/mbti/svg/analysis.svg',
       image1Filtered: false,
@@ -144,10 +150,21 @@ export default {
     },
     handleJump(){
       if(this.image1Filtered===true){
-        this.$router.push('/testPage1');
+        this.$router.push('/testPage1')
+        store.testType="conciseVersion"
+        for (let eachQuestion of questionsConciseVersion.questionList) {
+          console.log(111+store.Scores)
+          store.Scores.push({dimension:eachQuestion.dimension,value:0,valid:0})
+          console.log(222+store.Scores)
+
+        }
       }
       else if(this.image2Filtered===true){
-        this.$router.push('/testPage2');
+        this.$router.push('/testPage2')
+        store.testType="accurateVersion"
+        for (let eachQuestion of questionsAccurateVersion.questionList) {
+          store.Scores.push({dimension:eachQuestion.dimension,value:0,valid:0})
+        }
       }
       else {
         alert("请选择测试类型！");

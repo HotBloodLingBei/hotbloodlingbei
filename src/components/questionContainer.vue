@@ -12,12 +12,12 @@ export default {
       currentQuestionIndex: 0,
     };
   },
-  computed:{
-    buttonStyle(value){
-      return (store.Scores[this.currentQuestionIndex].value===value)&&store.Scores[this.currentQuestionIndex].valid
-          ?'#00A97F':'#E1E1E1FF'
-    }
-  },
+  // computed:{
+  //   buttonStyle(value){
+  //     return (store.Scores[this.currentQuestionIndex].value===value)&&store.Scores[this.currentQuestionIndex].valid
+  //         ?'#00A97F':'#E1E1E1FF'
+  //   }
+  // },
   methods: {
     nextQuestion() {
       // 更新 currentQuestionIndex 的值
@@ -55,25 +55,25 @@ export default {
     </div>
     <div>
       <button
-          :style="buttonStyle(questionsConciseVersion.optionScore[0].value)"
+          :style="{color: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[0].score ? '#A90000':'#00a982'}"
           @click="fetchChoice(0)" class = "button">{{ questionsConciseVersion.optionScore[0].text }}</button>
       <button
-          :style="buttonStyle(1)"
+          :style="{color: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[1].score ? '#A90000':'#00a982'}"
           @click="fetchChoice(1)" class = "button">{{ questionsConciseVersion.optionScore[1].text }}</button>
       <button
-          :style="buttonStyle(2)"
+          :style="{color: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[2].score ? '#A90000':'#00a982'}"
           @click="fetchChoice(2)" class = "button">{{ questionsConciseVersion.optionScore[2].text }}</button>
       <button
-          :style="buttonStyle(3)"
+          :style="{color: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[3].score&& store.Scores[currentQuestionIndex].valid===1 ? '#A90000':'#00a982'}"
           @click="fetchChoice(3)" class = "button">{{ questionsConciseVersion.optionScore[3].text }}</button>
       <button
-          :style="buttonStyle(4)"
+          :style="{color: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[4].score ? '#A90000':'#00a982'}"
           @click="fetchChoice(4)" class = "button">{{ questionsConciseVersion.optionScore[4].text }}</button>
       <button
-          :style="buttonStyle(5)"
+          :style="{color: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[5].score ? '#A90000':'#00a982'}"
           @click="fetchChoice(5)" class = "button">{{ questionsConciseVersion.optionScore[5].text }}</button>
       <button
-          :style="buttonStyle(6)"
+          :style="{color: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[6].score ? '#A90000':'#00a982'}"
           @click="fetchChoice(6)" class = "button">{{ questionsConciseVersion.optionScore[6].text }}</button>
     </div>
     <button @click="lastQuestion" v-if="currentQuestionIndex > 0">上一题</button>
@@ -86,7 +86,7 @@ export default {
 
 <style scoped>
 .button {
-  --color: #00A97F;
+  --color:  #00a982;
   padding: 0.8em 1.7em;
   background-color: transparent;
   border-radius: .3em;

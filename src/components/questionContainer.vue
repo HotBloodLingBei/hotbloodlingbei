@@ -9,15 +9,9 @@ export default {
     return {
       questionsConciseVersion,
       store,
-      currentQuestionIndex: 0,
+      currentQuestionIndex: store.initialIdx,
     };
   },
-  // computed:{
-  //   buttonStyle(value){
-  //     return (store.Scores[this.currentQuestionIndex].value===value)&&store.Scores[this.currentQuestionIndex].valid
-  //         ?'#00A97F':'#E1E1E1FF'
-  //   }
-  // },
   methods: {
     nextQuestion() {
       // 更新 currentQuestionIndex 的值
@@ -39,7 +33,8 @@ export default {
       }
     },
     saveProgress(){
-
+      localStorage.setItem("testType", JSON.stringify(store.testType))
+      localStorage.setItem("Scores", JSON.stringify(store.Scores))
     },
     handleSubmit(){
 

@@ -148,23 +148,62 @@ export default {
       this.image1Filtered = false;
       this.image2Filtered = true;
     },
-    handleJump(){
-      if(this.image1Filtered===true){
-        this.$router.push('/testPage1')
-        store.testType="conciseVersion"
-        for (let eachQuestion of questionsConciseVersion.questionList) {
-          console.log(111+store.Scores)
-          store.Scores.push({dimension:eachQuestion.dimension,value:0,valid:0})
-          console.log(222+store.Scores)
+    setLocalStorageToStore(){
+      let testType=localStorage.getItem("testType")
+      let Scores=localStorage.getItem("Scores");
+      if(testType&&Scores){
+        testType=JSON.parse(localStorage.getItem("testType"));
+        Scores=JSON.parse(localStorage.getItem("Scores"));
 
+      }
+    },
+
+    handleJump(){
+      // 初始化变量
+      let StrTestType=localStorage.getItem("testType")
+      let StrScores=localStorage.getItem("Scores");
+      let localStorageExistStatus=false;
+
+      if(StrTestType&&StrScores){
+        var testType=JSON.parse(localStorage.getItem("testType"));
+        var Scores=JSON.parse(localStorage.getItem("Scores"));
+        localStorageExistStatus=true
+      }
+      // 选了第一个
+      if(this.image1Filtered===true){
+        // 处理存在时的逻辑，并且testType与标准版相同，直接恢复store
+        if(localStorageExistStatus===true&&testType==="conciseVersion"){
+          store.Scores=Scores
+          store.testType=testType
+          let idx=0
+          while (store.Scores[idx].valid>0){
+            idx++
+          }
+          store.initialIdx=idx
+        }else{//处理不存在的逻辑
+          store.testType="conciseVersion"
+          for (let eachQuestion of questionsConciseVersion.questionList) {
+            store.Scores.push({dimension:eachQuestion.dimension,value:0,valid:0})
+          }
         }
+        this.$router.push('/testPage1')
       }
       else if(this.image2Filtered===true){
-        this.$router.push('/testPage2')
-        store.testType="accurateVersion"
-        for (let eachQuestion of questionsAccurateVersion.questionList) {
-          store.Scores.push({dimension:eachQuestion.dimension,value:0,valid:0})
+        if(localStorageExistStatus===true&&testType==="accurateVersion"){
+          store.Scores=Scores
+          store.testType=testType
+          let idx=0
+          while (store.Scores[idx].valid>0){
+            idx++
+          }
+          store.initialIdx=idx
+        }else{//处理不存在的逻辑
+          store.testType="accurateVersion"
+          for (let eachQuestion of questionsAccurateVersion.questionList) {
+            store.Scores.push({dimension:eachQuestion.dimension,value:0,valid:0})
+          }
         }
+        this.$router.push('/testPage2')
       }
       else {
         alert("请选择测试类型！");

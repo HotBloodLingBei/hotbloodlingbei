@@ -28,7 +28,7 @@ export default {
 <template>
     <div class="card">
         <div class="picture-container">
-            <img :src="imageUrl" alt="Card Image" class="card-image">
+            <img :src="imageUrl"  alt="Card Image" class="card-image">
         </div>
         <div class="cardContainer">
             <div class="wordcard">

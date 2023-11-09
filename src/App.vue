@@ -3,8 +3,8 @@
   <div id="app">
     <PageIndicator :currentPage="currentPage" @navigate="navigateToPage" />
     <TestTips/>
-      <router-view/>
-      <MyFooter/>
+    <router-view/>
+    <MyFooter/>
   </div>
   </div>
 </template>

@@ -175,34 +175,34 @@ export default {
         if(localStorageExistStatus===true&&testType==="conciseVersion"){
           store.Scores=Scores
           store.testType=testType
-          let idx=0
-          while (store.Scores[idx].valid>0){
-            idx++
-          }
-          store.initialIdx=idx
         }else{//处理不存在的逻辑
           store.testType="conciseVersion"
           for (let eachQuestion of questionsConciseVersion.questionList) {
             store.Scores.push({dimension:eachQuestion.dimension,value:0,valid:0})
           }
         }
+        let idx=0
+        while (store.Scores[idx].valid>0){
+          idx++
+        }
+        store.initialIdx=idx
         this.$router.push('/testPage1')
       }
       else if(this.image2Filtered===true){
         if(localStorageExistStatus===true&&testType==="accurateVersion"){
           store.Scores=Scores
           store.testType=testType
-          let idx=0
-          while (store.Scores[idx].valid>0){
-            idx++
-          }
-          store.initialIdx=idx
         }else{//处理不存在的逻辑
           store.testType="accurateVersion"
           for (let eachQuestion of questionsAccurateVersion.questionList) {
             store.Scores.push({dimension:eachQuestion.dimension,value:0,valid:0})
           }
         }
+        let idx=0
+        while (store.Scores[idx].valid>0){
+          idx++
+        }
+        store.initialIdx=idx
         this.$router.push('/testPage2')
       }
       else {

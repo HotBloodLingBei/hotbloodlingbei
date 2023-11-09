@@ -78,11 +78,24 @@ export default {
     <button @click="saveProgress">保存进度</button>
     <button @click="nextQuestion" v-if="currentQuestionIndex < questionsConciseVersion.questionList.length-1">下一题</button>
     <button @click="handleSubmit" v-if="currentQuestionIndex === questionsConciseVersion.questionList.length-1">提交</button>
+    <div class="container">
+      <button class="left-aligned-button"
+              :style="{height:'100%', width:(currentQuestionIndex*20+20) + '%' }"></button>
+    </div>
   </div>
   <TestTips/>
 </template>
 
 <style scoped>
+.left-aligned-button {
+  background-color:#00a982;
+  border-color: transparent;
+  border-radius: 0 10px 10px 0;
+}
+.container {
+  display: flex; /* 使用 flex 布局 */
+  align-items: flex-start; /* 设置内容垂直对齐方式为顶部对齐 */
+}
 .button {
   --color:  #00a982;
   padding: 0.8em 1.7em;

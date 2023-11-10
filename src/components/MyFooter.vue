@@ -33,6 +33,7 @@
   bottom: 0;
   width: 100%;
   position: relative;
+  z-index: 0;
 }
 
 .footer-content {

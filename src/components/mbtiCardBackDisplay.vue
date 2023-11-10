@@ -1,11 +1,12 @@
 
 
 <template>
-  <div class="mbtiDisplay" @click="showInfo">
+  <div class="mbtiDisplay" @click="showInfo = true">
     <p class="title">{{mbtiType}}</p>
     <p>{{Description}}</p>
   </div>
-  <info-card detail= mbtitype=mbtiType
+  <info-card :detail="detail" :mbti-type="mbtiType" :imageSrc="imageSrc" v-show="showInfo" @exit="click"></info-card>
+
 </template>
 
 <script>
@@ -17,7 +18,7 @@ export default {
   },
   data() {
     return {
-
+      showInfo: false,
     }
   },
   props :{
@@ -33,11 +34,15 @@ export default {
       type: String,
       required: true
     },
+    detail: {
+      type: String,
+      required: true
+    },
   },
 
   methods :{
-    showInfo : {
-
+    click(item) {
+      this.showInfo = item;
     }
   }
 }

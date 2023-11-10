@@ -8,7 +8,7 @@
             <p>{{mbtiType}}</p>
           </div>
           <div class="mbti-card-back">
-            <mbtiCardBackDisplay :mbtiType="mbtiType" :imageSrc="imageSrc" :Description="Description"/>
+            <mbtiCardBackDisplay :mbtiType="mbtiType" :imageSrc="imageSrc" :Description="Description" :detail="detail"/>
           </div>
         </div>
       </div>
@@ -31,6 +31,10 @@ export default {
       required: true
     },
     Description: {
+      type: String,
+      required: true
+    },
+    detail : {
       type: String,
       required: true
     },

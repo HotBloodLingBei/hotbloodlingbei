@@ -2,7 +2,6 @@
   <div class="container">
   <div id="app">
     <PageIndicator :currentPage="currentPage" @navigate="navigateToPage" />
-    <TestTips/>
     <router-view/>
     <MyFooter/>
   </div>

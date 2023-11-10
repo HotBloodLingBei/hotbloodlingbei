@@ -35,7 +35,7 @@ export default {
             leftVal: 0, // 轮播图盒子的偏移值
             flag: true, // 用来节流防止重复点击
             start: null, // 自动执行下一张定的时器
-            imgWidth: 800, // 在这里填写你需要的图片宽度
+            imgWidth: 600, // 在这里填写你需要的图片宽度
             ition: 0.6, // 设置轮播图过度时间
             imgShow: 0, // 表示当前显示的图片索引
         };
@@ -162,8 +162,8 @@ overflow: hidden;：设置溢出内容的部分隐藏，实现内容超出容器
 */
 .SwiperBox {
     position: relative;
-    width: 800px;
-    height: 480px;
+    width: 600px;
+    height: 250px;
     box-sizing: border-box;
     cursor: pointer;
     overflow: hidden;
@@ -180,8 +180,8 @@ justify-content: flex-start;：将容器内部元素左对齐。
     position: absolute;
     top: 0px;
     left: 0px;
-    min-width: 800px;
-    height: 480px;
+    min-width: 600px;
+    height: 250px;
     display: flex;
     justify-content: flex-start;
 }
@@ -251,7 +251,7 @@ color:rgba(109, 109, 109, 0.445);
 
 #app {
     width: 100%;
-    padding: 120px;
+    padding: 0px;
     display: flex;
     justify-content: center;
 }

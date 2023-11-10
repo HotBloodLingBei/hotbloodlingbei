@@ -14,12 +14,20 @@ export default {
 </script>
 
 <template>
-<div>开始测试</div>
-<RotationChart/>
+    <div class="contentBox">
+<RotationChart class="rotationChart"/>
   <chooseTest/>
   <screenshot-button>截图</screenshot-button>
+    </div>
 </template>
 
 <style scoped>
-
+.rotationChart{
+    //position: absolute;
+    top: 0; /* 将轮播图置顶 */
+}
+.contentBox{
+  display: flex;
+    flex-direction: column;
+}
 </style>

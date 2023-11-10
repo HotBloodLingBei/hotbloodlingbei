@@ -74,7 +74,7 @@ export default {
   background-color: #eee;
   display: flex;
   justify-content: space-around;
-  padding: 20px;
+  padding: 5px;
   border-bottom: 1px solid #ccc;
   z-index: 100;
 }

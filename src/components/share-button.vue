@@ -1,13 +1,17 @@
 <script>
-import clipboard from 'clipboard';
+// import clipboard from 'clipboard';
+
 export default {
   name: "share-button",
     methods:{
     //   将内容粘贴至剪切板
-        copyText() {
-            let text = 'Hello World';
-            clipboard.writeText(text);
-            alert('已复制到剪贴板！');
+        async copyToClipboard() {
+            try {
+                await navigator.clipboard.writeText("你好");
+                alert('本站链接已经复制至你的剪切板了哦！');
+            } catch (error) {
+                alert('复制失败：请联系本站管理员' + error.message);
+            }
         }
     //     用toast提示用户
     }
@@ -15,7 +19,7 @@ export default {
 </script>
 
 <template>
-    <button>
+    <button @click="copyToClipboard">
         <span>立即分享</span>
     </button>
 </template>

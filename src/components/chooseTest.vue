@@ -1,16 +1,15 @@
 <template>
-  <div class="logoContainer">
-    <img
-            
-        :src="imageSrc"
-        class="responsive-logo"
-    />
-    <img
-            
-        :src="logoSrc"
-        class="responsive-logo"
-    />
-  </div>
+<!--  <div class="logoContainer">-->
+<!--    <img-->
+<!--        :src="imageSrc"-->
+<!--        class="responsive-logo"-->
+<!--    />-->
+<!--    <img-->
+<!--            -->
+<!--        :src="logoSrc"-->
+<!--        class="responsive-logo"-->
+<!--    />-->
+<!--  </div>-->
   <div class="imgContainer">
     <div class="boxContainer"><div class="check-box">
       <img
@@ -25,7 +24,6 @@
     <div class="boxContainer"><div class="check-box">
       <img
           :src="image2Src"
-          
           :style="{ filter: image2Filtered ? 'none' : 'grayscale(100%)' }"
           class="responsive-image"
           @click="toggleImage2Filter"

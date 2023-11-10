@@ -75,32 +75,9 @@ export default {
           @click="fetchChoice(6)" class = "button">{{ questionsConciseVersion.optionScore[6].text }}</button>
     </div>
     <button @click="lastQuestion" v-if="currentQuestionIndex > 0">上一题</button>
-    <button class="bookmarkBtn"  @click="saveProgress">
-  <span class="IconContainer">
-    <svg viewBox="0 0 384 512" height="0.9em" class="icon"><path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"></path></svg>
-  </span>
-    <p class="text">Save</p>
-  </button>
-
-    <button class="cssbuttons-io-button"  @click="nextQuestion" v-if="currentQuestionIndex < questionsConciseVersion.questionList.length-1">
-      下一题
-      <div class="icon">
-        <svg
-            height="24"
-            width="24"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M0 0h24v24H0z" fill="none"></path>
-          <path
-              d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
-              fill="currentColor"
-          ></path>
-        </svg>
-      </div>
-    </button>
-
-    <button class="shadow__btn" @click="handleSubmit" v-if="currentQuestionIndex === questionsConciseVersion.questionList.length-1">提交</button>
+    <button @click="saveProgress">保存进度</button>
+    <button @click="nextQuestion" v-if="currentQuestionIndex < questionsConciseVersion.questionList.length-1">下一题</button>
+    <button @click="handleSubmit" v-if="currentQuestionIndex === questionsConciseVersion.questionList.length-1">提交</button>
     <div class="container">
       <button class="left-aligned-button"
               :style="{height:'100%', width:(currentQuestionIndex*20+20) + '%' }"></button>
@@ -110,7 +87,6 @@ export default {
 </template>
 
 <style scoped>
-
 .left-aligned-button {
   background-color:#00a982;
   border-color: transparent;
@@ -166,153 +142,11 @@ export default {
   width: 410px;
 }
 
-
+.button:hover {
+  color: rgb(10, 25, 30);
+}
 
 .button:active {
   filter: brightness(.8);
 }
-
-.bookmarkBtn {
-  width: 100px;
-  height: 40px;
-  border-radius: 40px;
-  border: 1px solid rgba(255, 255, 255, 0.349);
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition-duration: .3s;
-  overflow: hidden;
-}
-
-.IconContainer {
-  width: 30px;
-  height: 30px;
-  background: linear-gradient(to bottom, #00a982,#009087);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  z-index: 2;
-  transition-duration: .3s;
-}
-
-.icon {
-  border-radius: 1px;
-}
-
-.text {
-  height: 100%;
-  width: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #000000;
-  z-index: 1;
-  transition-duration: .3s;
-  font-size: 1.04em;
-}
-
-.bookmarkBtn:hover .IconContainer {
-  width: 90px;
-  border-radius: 40px;
-  transition-duration: .3s;
-}
-
-.bookmarkBtn:hover .text {
-  transform: translate(10px);
-  width: 0;
-  font-size: 0;
-  transition-duration: .3s;
-}
-
-.bookmarkBtn:active {
-  transform: scale(0.95);
-  transition-duration: .3s;
-}
-
-
-.shadow__btn {
-  padding: 10px 20px;
-  border: none;
-  font-size: 17px;
-  color: #fff;
-  border-radius: 7px;
-  letter-spacing: 4px;
-  font-weight: 700;
-  text-transform: uppercase;
-  transition: 0.5s;
-  transition-property: box-shadow;
-}
-
-.shadow__btn {
-  background: #00a982;
-  box-shadow: 0 0 25px #00a982;
-}
-
-.shadow__btn:hover {
-  box-shadow: 0 0 5px #00a982,
-  0 0 25px #00a982,
-  0 0 50px #00a982,
-  0 0 100px #00a982;
-}
-
-
-
-.cssbuttons-io-button {
-  background: #00a982;
-  color: white;
-  font-family: inherit;
-  padding: 0.35em;
-  padding-left: 1.2em;
-  font-size: 17px;
-  font-weight: 500;
-  border-radius: 0.9em;
-  border: none;
-  letter-spacing: 0.05em;
-  display: flex;
-  align-items: center;
-  box-shadow: inset 0 0 1.6em -0.6em #00a982;
-  overflow: hidden;
-  position: relative;
-  height: 2.8em;
-  padding-right: 3.3em;
-  cursor: pointer;
-}
-
-.cssbuttons-io-button .icon {
-  background: white;
-  margin-left: 1em;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 2.2em;
-  width: 2.2em;
-  border-radius: 0.7em;
-  box-shadow: 0.1em 0.1em 0.6em 0.2em #00a982;
-  right: 0.3em;
-  transition: all 0.3s;
-}
-
-.cssbuttons-io-button:hover .icon {
-  width: calc(100% - 0.6em);
-}
-
-.cssbuttons-io-button .icon svg {
-  width: 1.1em;
-  transition: transform 0.3s;
-  color: #00a982;
-}
-
-.cssbuttons-io-button:hover .icon svg {
-  transform: translateX(0.1em);
-}
-
-.cssbuttons-io-button:active .icon {
-  transform: scale(0.95);
-}
-
 </style>

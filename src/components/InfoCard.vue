@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <div v-if="show" class="mask">
+  <div class="mask">
   <div class="modal">
     <article class="modal-container">
       <header class="modal-container-header">
@@ -13,7 +13,7 @@
         </svg>
 				{{mbtiType}} Information
 			</span>
-        <button class="icon-button" @click="close">
+        <button class="icon-button" @click="exit">
           <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 0h24v24H0z" fill="none"></path>
             <path d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z" fill="currentColor"></path>
@@ -21,8 +21,8 @@
         </button>
       </header>
       <section class="modal-container-body rtf">
-        <p>Information here</p>
-        <p>{{detail}}</p>
+        <img :src="imageSrc" alt="mbtiType" class="img"/>
+        <p class="text">{{detail}}</p>
       </section>
     </article>
   </div>
@@ -42,10 +42,14 @@ export default {
       type: String,
       required: true
     },
+    imageSrc: {
+      type: String,
+      required: true
+    },
   },
   methods : {
-    close() {
-      this.$emit('close')
+    exit() {
+      this.$emit("exit", false);
     }
   },
 }
@@ -56,10 +60,9 @@ export default {
 .mask {
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
+  left: -190px;
+  width: 300%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,6 +71,8 @@ export default {
 
 .modal {
   white-space: pre-line;
+  color: black;
+  z-index: 9999;
 }
 
 a {
@@ -75,7 +80,7 @@ a {
 }
 
 .modal-container {
-  max-height: 400px;
+  max-height: 600px;
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
@@ -85,6 +90,7 @@ a {
   display: flex;
   flex-direction: column;
   box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.25);
+  z-index: 9999;
 }
 
 @media (max-width: 600px) {
@@ -195,4 +201,15 @@ a {
   background-color: #dfdad7;
 }
 
+.img {
+  width: 50%;
+  height: 50%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.text {
+  text-align: left;
+  font-family: Microsoft YaHei, sans-serif;
+}
 </style>

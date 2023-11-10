@@ -5,7 +5,7 @@ export default {
     name: "restart-test-button",
     methods: {
        gotoStartTestPage(){
-           this.$router.push('/testPage1')
+           this.$router.push('/')
       }
     }
 }

@@ -41,8 +41,8 @@ export default {
 
 <style scoped>
 .card {
-    width: 800px;
-    height: 480px;
+    width: 600px;
+    height: 250px;
     background-color: #f1f1f1;
     border-radius: 10px;
     overflow: hidden;
@@ -52,13 +52,13 @@ export default {
 
 .card-image {
     width: 100%;
-    height: 480px;
+    height: 250px;
 }
 
 .wordcard {
     position: relative;
-    width: 320px;
-    height: 480px;
+    width: 200px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,8 +72,8 @@ export default {
 }
 
 .picture-container{
-    width: 480px;
-    height: 480px;
+    width: 400px;
+    height: 250px;
 }
 
 .content {

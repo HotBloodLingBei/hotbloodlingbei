@@ -2,7 +2,7 @@
 <template>
   <div class="display">
   <mbti-card v-for="choice in Choices" :key="choice.id"
-             :description = choice.description
+             :Description = choice.description
              :image-src = choice.imageSrc
              :mbti-type = choice.mbtiType
              >
@@ -27,99 +27,99 @@ export default {
       Choices: [
         {
           id: 1,
-          description: mbtiDescription.enfpDescription,
-          imageSrc: PersonPictureLink.enfpcampaigner,
-          mbtiType: "ENFP"
-        },
-        {
-          id: 2,
-          description: mbtiDescription.enfjDescription,
-          imageSrc: PersonPictureLink.enfjprotagonist,
-          mbtiType: "ENFJ"
-        },
-        {
-          id: 3,
-          description: mbtiDescription.esfjDescription,
-          imageSrc: PersonPictureLink.esfjconsul,
-          mbtiType: "ESFJ"
-        },
-        {
-          id: 4,
-          description: mbtiDescription.entjDescription,
-          imageSrc: PersonPictureLink.entjcommander,
-          mbtiType: "ENTJ"
-        },
-        {
-          id: 5,
-          description: mbtiDescription.entpDescription,
-          imageSrc: PersonPictureLink.entpdebater,
-          mbtiType: "ENTP"
-        },
-        {
-          id: 6,
-          description: mbtiDescription.esfpDescription,
-          imageSrc: PersonPictureLink.esfpentertainer,
-          mbtiType: "ESFP"
-        },
-        {
-          id: 7,
-          description: mbtiDescription.estjDescription,
-          imageSrc: PersonPictureLink.estjexecutive,
-          mbtiType: "ESTJ"
-        },
-        {
-          id: 8,
-          description: mbtiDescription.estpDescription,
-          imageSrc: PersonPictureLink.estpentrepreneur,
-          mbtiType: "ESTP"
-        },
-        {
-          id: 9,
-          description: mbtiDescription.infjDescription,
-          imageSrc: PersonPictureLink.infjadvocate,
-          mbtiType: "INFJ"
-        },
-        {
-          id: 10,
-          description: mbtiDescription.infpDescription,
-          imageSrc: PersonPictureLink.infpmediator,
-          mbtiType: "INFP"
-        },
-        {
-          id: 11,
-          description: mbtiDescription.intjDescription,
+          description: mbtiDescription.intjDescription.shortInstruction,
           imageSrc: PersonPictureLink.intjarchitect,
           mbtiType: "INTJ"
         },
         {
-          id: 12,
-          description: mbtiDescription.intpDescription,
+          id: 2,
+          description: mbtiDescription.intpDescription.shortInstruction,
           imageSrc: PersonPictureLink.intplogician,
           mbtiType: "INTP"
         },
         {
-          id: 13,
-          description: mbtiDescription.isfjDescription,
+          id: 3,
+          description: mbtiDescription.entjDescription.shortInstruction,
+          imageSrc: PersonPictureLink.entjcommander,
+          mbtiType: "ENTJ"
+        },
+        {
+          id: 4,
+          description: mbtiDescription.entpDescription.shortInstruction,
+          imageSrc: PersonPictureLink.entpdebater,
+          mbtiType: "ENTP"
+        },
+        {
+          id: 5,
+          description: mbtiDescription.infjDescription.shortInstruction,
+          imageSrc: PersonPictureLink.infjadvocate,
+          mbtiType: "INFJ"
+        },
+        {
+          id: 6,
+          description: mbtiDescription.infpDescription.shortInstruction,
+          imageSrc: PersonPictureLink.infpmediator,
+          mbtiType: "INFP"
+        },
+        {
+          id: 7,
+          description: mbtiDescription.enfjDescription.shortInstruction,
+          imageSrc: PersonPictureLink.enfjprotagonist,
+          mbtiType: "ENFJ"
+        },
+        {
+          id: 8,
+          description: mbtiDescription.enfpDescription.shortInstruction,
+          imageSrc: PersonPictureLink.enfpcampaigner,
+          mbtiType: "ENFP"
+        },
+        {
+          id: 9,
+          description: mbtiDescription.istjDescription.shortInstruction,
+          imageSrc: PersonPictureLink.istjlogistician,
+          mbtiType: "ISTJ"
+        },
+        {
+          d: 10,
+          description: mbtiDescription.isfjDescription.shortInstruction,
           imageSrc: PersonPictureLink.isfjdefender,
           mbtiType: "ISFJ"
         },
         {
+          id: 11,
+          description: mbtiDescription.estjDescription.shortInstruction,
+          imageSrc: PersonPictureLink.estjexecutive,
+          mbtiType: "ESTJ"
+        },
+        {
+          id: 12,
+          description: mbtiDescription.esfjDescription.shortInstruction,
+          imageSrc: PersonPictureLink.esfjconsul,
+          mbtiType: "ESFJ"
+        },
+        {
+          id: 13,
+          description: mbtiDescription.esfpDescription.shortInstruction,
+          imageSrc: PersonPictureLink.esfpentertainer,
+          mbtiType: "ESFP"
+        },
+        {
           id: 14,
-          description: mbtiDescription.isfpDescription,
+          description: mbtiDescription.isfpDescription.shortInstruction,
           imageSrc: PersonPictureLink.isfpadventurer,
           mbtiType: "ISFP"
         },
         {
           id: 15,
-          description: mbtiDescription.istjDescription,
-          imageSrc: PersonPictureLink.istjlogistician,
-          mbtiType: "ISTJ"
+          description: mbtiDescription.estpDescription.shortInstruction,
+          imageSrc: PersonPictureLink.estpentrepreneur,
+          mbtiType: "ESTP"
         },
         {
           id: 16,
-          description: mbtiDescription.istpDescription,
-          imageSrc: PersonPictureLink.istpvirtuoso,
-          mbtiType: "ISTP"
+          description: mbtiDescription.esfpDescription.shortInstruction,
+          imageSrc: PersonPictureLink.esfpentertainer,
+          mbtiType: "ESFP"
         },
       ]
     }
@@ -129,6 +129,10 @@ export default {
 
 <style scoped>
 .display {
+  position:relative;
+  left: 10%;
+  width: 90%;
+  height:1300px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;

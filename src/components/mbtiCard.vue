@@ -94,12 +94,13 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 300%;
-  height: 200%;
+  width: 100%;
+  height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   border: 1px solid #176d22;
   border-radius: 1rem;
+  z-index: 100;
 }
 
 </style>

@@ -12,14 +12,12 @@
 <script>
 import PageIndicator from './components/PageIndicator.vue';
 import MyFooter from './components/MyFooter.vue';
-import TestTips from "@/components/TestTips.vue";
 
 export default {
   name: 'App',
   components: {
     PageIndicator,
     MyFooter,
-    TestTips
   },
   data (){
     return {

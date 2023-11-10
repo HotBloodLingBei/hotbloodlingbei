@@ -4,7 +4,7 @@
       <div class="mbti-card">
         <div class="mbti-card-inner">
           <div class="mbti-card-front">
-            <img :src="imageSrc" alt="MBTI-Image"/>
+            <img :src="imageSrc" alt="MBTI-Image" class="img"/>
             <p>{{mbtiType}}</p>
           </div>
           <div class="mbti-card-back">
@@ -105,6 +105,10 @@ export default {
   border: 1px solid #176d22;
   border-radius: 1rem;
   z-index: 100;
+}
+
+.img {
+  margin: 8px;
 }
 
 </style>

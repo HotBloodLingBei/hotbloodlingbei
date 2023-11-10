@@ -3,7 +3,7 @@
 <template>
   <div class="mbtiDisplay" @click="showInfo = true">
     <p class="title">{{mbtiType}}</p>
-    <p>{{Description}}</p>
+    <p class="text">{{Description}}</p>
   </div>
   <info-card :detail="detail" :mbti-type="mbtiType" :imageSrc="imageSrc" v-show="showInfo" @exit="click"></info-card>
 
@@ -55,6 +55,14 @@ export default {
   font-weight: 900;
   text-align: center;
   margin: 0;
+}
+
+.text {
+  font-size: 0.9em;
+  font-weight: 400;
+  text-align: left;
+  margin: 15px;
+  font-family: Microsoft YaHei, sans-serif;
 }
 
 </style>

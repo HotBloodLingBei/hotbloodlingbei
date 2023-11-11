@@ -1,24 +1,54 @@
-# hotbloodlingbei
+# MBTI人格测试项目
 
-## Project setup
-```
-npm install
-```
+## 一、项目介绍
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+本项目仅用于参加武汉大学2023年度零杯比赛
 
-### Compiles and minifies for production
-```
-npm run build
-```
+1. 功能：
 
-### Lints and fixes files
-```
-npm run lint
-```
+    1. 根据用户所填信息，生成对应的人格介绍
+    2. 浏览各个人格的特征
+    3. 截图并下载测试结果
+    4. 分享自己测试结果链接给他人
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## 二、小组介绍
+
+1. 陆达  
+   主要负责
+2. 薛为之  
+   主要负责
+
+3. 李泽粲
+4. 徐睿彰
+
+1. 小组名：热血林北
+2. 成员
+
+    1. 陆达
+
+       主要负责轮播图部分，以及最后结果呈现部分
+    2. 薛为之
+    3. 李泽粲
+    4. 徐睿彰
+
+## 三、实现所用到的技术栈
+
+1. 采用纯前端vue框架来实现，将逻辑处理用js来实现。
+
+## 四、网站架构
+
+1. assets目录下用于放置网站用到的svg矢量图
+2. common目录下放置的为字体文件，目前字体不显示，这个问题仍在修复
+3. components目录下放置我们开发的一系列组件
+4. data目录下放置一系列用到的常量值
+5. store目录下放置管理各组件之间通信的变量
+6. views目录下用于放置各页面
+7. router用于配置页面路由
+
+## 五、使用到的第三方库和其他技术支持
+
+1. ‍
+
+## 六、联系我们
+
+‍

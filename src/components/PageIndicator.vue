@@ -16,14 +16,14 @@
       :class="{ active: currentPage === '/mbtiInstructionPage' }"
       @click="navigateTo('/mbtiInstructionPage')"
   >
-    MBTI说明
+    MBTI介绍
   </div>
   <div
       class="indicator-item"
       :class="{ active: currentPage === '/resultPage' }"
       @click="showModal"
   >
-    结果
+      测试结果
     <MyModal
         v-if="isModalVisible"
         content="请先完成测试"

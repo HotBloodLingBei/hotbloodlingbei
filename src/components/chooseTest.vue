@@ -13,8 +13,7 @@
   <div class="imgContainer">
     <div class="boxContainer"><div class="check-box">
       <img
-
-              :src="image1Src"
+          :src="image1Src"
           :style="{ filter: image1Filtered ? 'none' : 'grayscale(100%)' }"
           class="responsive-image"
           @click="toggleImage1Filter"
@@ -41,15 +40,18 @@
       <span>进入测试</span>
     </button>
   </div>
+  <MyModal
+      v-if="isModalVisible"
+      content="请先选择测试类型"
+      />
 </template>
 
 <style scoped>
 
 .boxContainer{
-    padding: 10px;
+  padding: 10px;
 }
-
-.imgContainer {
+.imgContainer{
     padding: 0px;
     margin-bottom: 10px;
     display: flex;
@@ -58,44 +60,29 @@
     justify-content: center;
     align-items: center;
 }
-
-.logoContainer {
-    padding: 20px;
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
 .responsive-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
-
 .responsive-button {
-    width: 20%;
-    height: 100%;
-    object-fit: contain;
-    justify-content: center;
-    align-items: center;
+  width: 20%;
+  height: 100%;
+  object-fit: contain;
+  justify-content: center;
+  align-items: center;
 }
-
-.responsive-logo {
-    width: 10%;
-    height: 10%;
-    object-fit: contain;
+.check-box{
+  cursor: pointer;
+  border-radius: 24px;
+  background: #ffffff;
+  box-shadow:  5px 5px 10px #bebebe,
+  -5px -5px 10px #ffffff;
+  padding: 10px;
+  transition: transform 0.3s ease;
 }
-
-.check-box {
-    cursor: pointer;
-    border-radius: 24px;
-    background: #ffffff;
-    box-shadow: 5px 5px 10px #bebebe,
-    -5px -5px 10px #ffffff;
-    padding: 10px;
+.check-box:hover{
+  transform: translateY(-10px);
 }
 button {
   cursor: pointer;
@@ -126,15 +113,21 @@ button:hover svg {
 button:hover span {
   transform: translateX(7px);
 }
-
+button:active {
+  filter: brightness(.8);
+}
 </style>
 
 <script>
 import store  from '@/store/store.js'
-import questionsConciseVersion from '@/data/questionsConciseVersion.js'
-import questionsAccurateVersion from "@/data/questionsAccurateVersion";
+import  questionsConciseVersion  from '@/data/questionsConciseVersion.js'
+import questionsAccurateVersion from "@/data/questionsAccurateVersion"
+import MyModal from "@/components/MyModal.vue";
 export default {
   name: "chooseTest",
+  components: {
+    MyModal
+  },
   data() {
     return {
       questionsConciseVersion,
@@ -145,37 +138,28 @@ export default {
       image1Filtered: false,
       image2Filtered: false,
       imageSrc:'https://raw.githubusercontent.com/DXHeroes/knowledge-base-content/master/files/16personalities.png',
-        logoSrc: require('../assets/mbti.jpg')
+      logoSrc:require('../assets/mbti.jpg'),
+      isModalVisible: false,
     };
   },
   methods: {
-      toggleImage1Filter() {
-          this.image1Filtered = true;
-          this.image2Filtered = false;
-      },
-      toggleImage2Filter() {
-          this.image1Filtered = false;
-          this.image2Filtered = true;
-      },
-      setLocalStorageToStore() {
-          let testType = localStorage.getItem("testType")
-          let Scores = localStorage.getItem("Scores");
-          if (testType && Scores) {
-              testType = JSON.parse(localStorage.getItem("testType"));
-              Scores = JSON.parse(localStorage.getItem("Scores"));
+    toggleImage1Filter() {
+      this.image1Filtered = true;
+      this.image2Filtered = false;
+    },
+    toggleImage2Filter() {
+      this.image1Filtered = false;
+      this.image2Filtered = true;
+    },
+    handleJump(){
+      // 初始化变量
+      let StrTestType=localStorage.getItem("testType")
+      let StrScores=localStorage.getItem("Scores");
+      let localStorageExistStatus=false;
 
-          }
-      },
-
-      handleJump() {
-          // 初始化变量
-          let StrTestType = localStorage.getItem("testType")
-          let StrScores = localStorage.getItem("Scores");
-          let localStorageExistStatus = false;
-
-          if (StrTestType && StrScores) {
-              var testType = JSON.parse(localStorage.getItem("testType"));
-              var Scores = JSON.parse(localStorage.getItem("Scores"));
+      if(StrTestType&&StrScores){
+        var testType=JSON.parse(localStorage.getItem("testType"));
+        var Scores=JSON.parse(localStorage.getItem("Scores"));
         localStorageExistStatus=true
       }
       // 选了第一个
@@ -215,7 +199,7 @@ export default {
         this.$router.push('/testPage2')
       }
       else {
-          alert("请选择测试类型！");
+        this.isModalVisible=true;
       }
     }
   },

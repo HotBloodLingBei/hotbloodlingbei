@@ -1,29 +1,36 @@
 
 <template>
   <div class="display">
-  <mbti-card v-for="choice in Choices" :key="choice.id"
-             :Description = choice.description
-             :image-src = choice.imageSrc
-             :mbti-type = choice.mbtiType
-             :detail = choice.detail>
-  </mbti-card>
+    <mbti-card v-for="choice in Choices"
+               :key="choice.id"
+               :mbtiType="choice.mbtiType"
+               :imageSrc="choice.imageSrc"
+               :Description="choice.description"
+               :detail="choice.detail"
+               class="mbti-card"/>
   </div>
+  <info-card :my-detail="myDetail" :my-image-src="myImageSrc" :my-mbti-type="myMbtiType"
+      v-if="showInfo === 'true'" @exit="clickExit"/>
   <div class="blank"></div>
 </template>
 
 <script>
-import mbtiCard from "@/components/mbtiCard.vue";
 import mbtiDescription from "@/data/mbtiDescription";
 import PersonPictureLink from "@/data/16PersonPictureLink";
 import mbtiDetail from "@/data/mbtiDetail";
+import InfoCard from "@/components/InfoCard.vue";
+import mbtiCard from "@/components/mbtiCard.vue";
+import eventBus from "@/data/eventBus";
 
 export default {
   name: "mbtiInstructionPage",
   components: {
-    mbtiCard,
+  InfoCard,
+  mbtiCard,
   },
   data() {
     return {
+      showInfo: 'false',
       mbtiDescription: mbtiDescription,
       PersonPictureLink: PersonPictureLink,
       mbtiDetail: mbtiDetail,
@@ -140,9 +147,34 @@ export default {
           mbtiType: "ESFP",
           detail: mbtiDetail.esfpDetail
         },
-      ]
+      ],
+      myMbtiType: "",
+      myImageSrc: "",
+      myDetail: "",
     }
   },
+  created() {
+    this.getData();
+  },
+  methods :{
+    clickExit() {
+      this.showInfo = false;
+    },
+    getData() {
+      eventBus.on("sendDisplayInfo", (showInfo) => {
+        this.showInfo = showInfo;
+      });
+      eventBus.on("getMbtiType", (mbtiType) => {
+        this.myMbtiType = mbtiType;
+      });
+      eventBus.on("getMbtiDetail", (mbtiDetail) => {
+        this.myDetail = mbtiDetail;
+      });
+      eventBus.on("getMbtiImageSrc", (mbtiImageSrc) => {
+        this.myImageSrc = mbtiImageSrc;
+      });
+    }
+  }
 }
 </script>
 

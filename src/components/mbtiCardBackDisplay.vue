@@ -1,25 +1,25 @@
 
 
 <template>
-  <div class="mbtiDisplay" @click="showInfo = true">
+  <div class="mbtiDisplay" @click="displayInfo">
     <p class="title">{{mbtiType}}</p>
     <p class="text">{{Description}}</p>
   </div>
-  <info-card class="info-card" :detail="detail" :mbti-type="mbtiType" :imageSrc="imageSrc" v-show="showInfo"
-             @exit="click"></info-card>
-
 </template>
 
 <script>
-import infoCard from "@/components/InfoCard.vue";
+import eventBus from "@/data/eventBus";
 
 export default {
-  components:{
-    infoCard,
-  },
   data() {
+    let MyType = this.mbtiType;
+    let MyImageSrc = this.imageSrc;
+    let MyDetail = this.detail;
     return {
-      showInfo: false,
+      showInfo: 'true',
+      Type: MyType,
+      ImageSrc: MyImageSrc,
+      Detail: MyDetail,
     }
   },
   props :{
@@ -40,10 +40,12 @@ export default {
       required: true
     },
   },
-
   methods :{
-    click(item) {
-      this.showInfo = item;
+    displayInfo() {
+      eventBus.emit("sendDisplayInfo", this.showInfo);
+      eventBus.emit("getMbtiType", this.Type);
+      eventBus.emit("getMbtiDetail", this.Detail);
+      eventBus.emit("getMbtiImageSrc", this.ImageSrc);
     }
   }
 }

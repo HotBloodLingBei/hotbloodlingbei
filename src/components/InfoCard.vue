@@ -11,7 +11,7 @@
 				<svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"></path>
         </svg>
-				{{mbtiType}} Information
+				{{myMbtiType}} Information
 			</span>
         <button class="icon-button" @click="exit">
           <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -21,8 +21,8 @@
         </button>
       </header>
       <section class="modal-container-body rtf">
-        <img :src="imageSrc" alt="mbtiType" class="img"/>
-        <p class="text">{{detail}}</p>
+        <img :src="myImageSrc" alt="mbtiType" class="img"/>
+        <p class="text">{{myDetail}}</p>
       </section>
     </article>
   </div>
@@ -30,19 +30,19 @@
 </template>
 
 <script>
+
 export default {
   name: 'InfoCard',
-  props :{
-    show : {},
-    mbtiType : {
+  props: {
+    myMbtiType: {
       type: String,
       required: true
     },
-    detail : {
+    myImageSrc: {
       type: String,
       required: true
     },
-    imageSrc: {
+    myDetail: {
       type: String,
       required: true
     },
@@ -50,7 +50,7 @@ export default {
   methods : {
     exit() {
       this.$emit("exit", false);
-    }
+    },
   },
 }
 
@@ -60,8 +60,8 @@ export default {
 .mask {
   position: fixed;
   top: 0;
-  left: -190px;
-  width: 300%;
+  left: 0;
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;

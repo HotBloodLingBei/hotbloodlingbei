@@ -21,7 +21,7 @@
   <div
       class="indicator-item"
       :class="{ active: currentPage === '/resultPage' }"
-      @click="showModal"
+      @click="handleClick"
   >
       测试结果
     <MyModal
@@ -35,14 +35,19 @@
 
 <script>
 import MyModal from "@/components/MyModal.vue"; // 引入弹窗组件
+import store from "@/store/store";
+
 export default {
   components: {
     MyModal
   },
-
+  computed: {
+    currentPage() {
+      return store.mbtiType;
+    },
+  },
   data() {
     return {
-      currentPage: '/', // 默认显示在首页
       isModalVisible: false, // 控制弹窗是否显示
     };
   },
@@ -59,6 +64,14 @@ export default {
 
     closeModal() {
       this.isModalVisible = false;
+    },
+
+    handleClick() {
+      if (store.mbtiType !== '') {
+        this.navigateTo('/resultPage');
+      } else {
+        this.showModal();
+      }
     },
 
   },

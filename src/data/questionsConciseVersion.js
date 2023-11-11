@@ -1,12 +1,12 @@
 export default {
     optionScore:[
-        {text: 'strongly agree', score: 3},
-        {text: 'agree', score: 2},
-        {text: 'relatively agree', score: 1},
-        {text: 'neutral', score: 0},
-        {text: 'relatively disagree', score: -1},
-        {text: 'disagree', score: -2},
-        {text: 'strongly disagree', score: -3},
+        {text:'strongly agree', score:3},
+        {text: 'agree',score:2},
+        {text:'relatively agree', score:1},
+        {text:'neutral', score:0},
+        {text:'relatively disagree', score:-1},
+        {text: 'disagree',score: -2},
+        {text:'strongly disagree', score:-3},
     ],
     questionList:[
         {

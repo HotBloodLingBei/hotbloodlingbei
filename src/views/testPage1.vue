@@ -18,28 +18,28 @@ export default {
   methods: {
     nextQuestion() {
       // 更新 currentQuestionIndex 的值
-      if (this.currentQuestionIndex < questionsConciseVersion.questionList.length - 1) {
+      if(this.currentQuestionIndex < questionsConciseVersion.questionList.length-1){
         this.currentQuestionIndex += 1;
       }
     },
     lastQuestion() {
-      if (this.currentQuestionIndex > 0) {
+      if(this.currentQuestionIndex > 0){
         this.currentQuestionIndex -= 1;
       }
     },
     fetchChoice(choiceNum) {
       console.log(store.Scores)
-      store.Scores[this.currentQuestionIndex].value = questionsConciseVersion.optionScore[choiceNum].score
-      store.Scores[this.currentQuestionIndex].valid = 1
-      if (this.currentQuestionIndex < questionsConciseVersion.questionList.length - 1) {
+      store.Scores[this.currentQuestionIndex].value=questionsConciseVersion.optionScore[choiceNum].score
+      store.Scores[this.currentQuestionIndex].valid=1
+      if(this.currentQuestionIndex < questionsConciseVersion.questionList.length-1){
         this.currentQuestionIndex += 1;
       }
     },
-    saveProgress() {
+    saveProgress(){
       localStorage.setItem("testType", JSON.stringify(store.testType))
       localStorage.setItem("Scores", JSON.stringify(store.Scores))
     },
-    handleSubmit() {
+    handleSubmit(){
 
     }
   }
@@ -47,124 +47,111 @@ export default {
 </script>
 
 <template>
-  <div style="padding: 5%">
-    <div style="
-      padding: 5%;
-      border-radius: 50px;
-      background: #ffffff;
-      box-shadow:  20px 20px 60px #bebebe,
-      -20px -20px 60px #ffffff;">
-      <div style="  height: 200px;  display: flex; justify-content: center;align-items: center;">
-        {{ questionsConciseVersion.questionList[this.currentQuestionIndex].description }}
-      </div>
-      <div style=" margin-right: 5%; margin-left: 5%; display: flex; justify-content: space-between;">
-        <button
-            :style="{width:'100px' , height: '45px', background: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[0].score ? '#bebebe':'#ffffff'}"
-            @click="fetchChoice(0)" class="button">{{ questionsConciseVersion.optionScore[0].text }}
-        </button>
-        <button
-            :style="{width:'100px' , height: '45px',background: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[1].score ? '#bebebe':'#ffffff'}"
-            @click="fetchChoice(1)" class="button">{{ questionsConciseVersion.optionScore[1].text }}
-        </button>
-        <button
-            :style="{width:'100px' , height: '45px',background: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[2].score ? '#bebebe':'#ffffff'}"
-            @click="fetchChoice(2)" class="button">{{ questionsConciseVersion.optionScore[2].text }}
-        </button>
-        <button
-            :style="{width:'100px' , height: '45px',background: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[3].score&& store.Scores[currentQuestionIndex].valid===1 ? '#bebebe':'#ffffff'}"
-            @click="fetchChoice(3)" class="button">{{ questionsConciseVersion.optionScore[3].text }}
-        </button>
-        <button
-            :style="{width:'100px' , height: '45px',background: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[4].score ? '#bebebe':'#ffffff'}"
-            @click="fetchChoice(4)" class="button">{{ questionsConciseVersion.optionScore[4].text }}
-        </button>
-        <button
-            :style="{width:'100px' , height: '45px',background: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[5].score ? '#bebebe':'#ffffff'}"
-            @click="fetchChoice(5)" class="button">{{ questionsConciseVersion.optionScore[5].text }}
-        </button>
-        <button
-            :style="{width:'100px' , height: '45px',background: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[6].score ? '#bebebe':'#ffffff'}"
-            @click="fetchChoice(6)" class="button">{{ questionsConciseVersion.optionScore[6].text }}
-        </button>
-      </div>
+  <div>
+    <div style="  font-size: 30px;height: 200px;  display: flex; justify-content: center;align-items: center;">
+      {{questionsConciseVersion.questionList[this.currentQuestionIndex].description}}
     </div>
-<!--按钮容器-->
-    <div style=" align-items: center;justify-content: space-between;display: flex;">
-<!--上一题的按钮-->
-      <div style="height: 60px; width:60px">
-        <button class="button1" @click="lastQuestion" v-if="currentQuestionIndex > 0">
-          <div class="button1-box">
-            <span class="button1-elem">
-              <svg viewBox="0 0 46 40">
-                <path
-                    d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"/>
-              </svg>
-            </span>
-          </div>
-        </button>
-      </div>
-<!--保存进度按钮-->
-      <div style="margin: 10px;display: flex;height: 60px; width: 100px;  align-items: center;">
-        <button class="bookmarkBtn" @click="saveProgress">
-          <span class="IconContainer">
-            <svg viewBox="0 0 384 512" height="0.9em" class="icon">
-              <path
-                  d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"/>
-            </svg>
-          </span>
-          <p class="text">保存进度</p>
-        </button>
-      </div>
-<!--下一题的按钮-->
-      <div style="height: 60px; width: 140px; display: flex;align-items: center;">
-        <button class="cssbuttons-io-button" @click="nextQuestion"
-                v-if="currentQuestionIndex < questionsConciseVersion.questionList.length-1">
-          下一题
-          <div class="icon">
-            <svg
-                height="24"
-                width="24"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M0 0h24v24H0z" fill="none"/>
-              <path
-                  d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
-                  fill="currentColor"
-              />
-            </svg>
-          </div>
-        </button>
-      </div>
-<!--提交按钮-->
-      <div style="height: 60px; width: 100px; display: flex;align-items: center;">
-        <button class="shadow__btn" @click="handleSubmit"
-                v-if="currentQuestionIndex === questionsConciseVersion.questionList.length-1">提交
-        </button>
-      </div>
-<!--按钮容器结束-->
-    </div>
-    <div>{{ currentQuestionIndex+1 }} / {{ questionsConciseVersion.questionList.length }}</div>
-<!--进度条的容器-->
-    <div style="margin:10px;background-color: white;display: flex;align-items: flex-start;">
-      <button class="left-aligned-button"
-              :style="{height:'100%', width:((currentQuestionIndex+1)*100/questionsConciseVersion.questionList.length) + '%' }"/>
-    </div>
+    <div style=" margin-right: 5%; margin-left: 5%; display: flex; justify-content: space-between;">
+      <button
+          :style="{width:'100px' , height: '45px', color: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[0].score ? '#A90000':'#00a982'}"
+          @click="fetchChoice(0)" class = "button">{{ questionsConciseVersion.optionScore[0].text }}</button>
+      <button
+          :style="{width:'100px' , height: '45px',color: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[1].score ? '#A90000':'#00a982'}"
+          @click="fetchChoice(1)" class = "button">{{ questionsConciseVersion.optionScore[1].text }}</button>
+      <button
+          :style="{width:'100px' , height: '45px',color: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[2].score ? '#A90000':'#00a982'}"
+          @click="fetchChoice(2)" class = "button">{{ questionsConciseVersion.optionScore[2].text }}</button>
+      <button
+          :style="{width:'100px' , height: '45px',color: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[3].score&& store.Scores[currentQuestionIndex].valid===1 ? '#A90000':'#00a982'}"
+          @click="fetchChoice(3)" class = "button">{{ questionsConciseVersion.optionScore[3].text }}</button>
+      <button
+          :style="{width:'100px' , height: '45px',color: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[4].score ? '#A90000':'#00a982'}"
+          @click="fetchChoice(4)" class = "button">{{ questionsConciseVersion.optionScore[4].text }}</button>
+      <button
+          :style="{width:'100px' , height: '45px',color: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[5].score ? '#A90000':'#00a982'}"
+          @click="fetchChoice(5)" class = "button">{{ questionsConciseVersion.optionScore[5].text }}</button>
+      <button
+          :style="{width:'100px' , height: '45px',color: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[6].score ? '#A90000':'#00a982'}"
+          @click="fetchChoice(6)" class = "button">{{ questionsConciseVersion.optionScore[6].text }}</button>
 
+    </div>
+    <div class="container" style="margin-top: 200px; align-items: center;justify-content: space-between;">
+      <div style="height: 60px; width:60px">
+      <button class="button1" @click="lastQuestion" v-if="currentQuestionIndex > 0">
+        <div class="button1-box">
+    <span class="button1-elem">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 46 40">
+        <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"></path>
+      </svg>
+    </span>
+          <span class="button1-elem">
+      <svg viewBox="0 0 46 40">
+        <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"></path>
+      </svg>
+    </span>
+        </div>
+      </button>
+</div>
+
+      <div style=" display: flex;height: 60px; width: 100px;  align-items: center;">
+    <button class="bookmarkBtn"  @click="saveProgress">
+  <span class="IconContainer">
+    <svg viewBox="0 0 384 512" height="0.9em" class="icon"><path d="M0 48V487.7C0 501.1 10.9 512 24.3 512c5 0 9.9-1.5 14-4.4L192 400 345.7 507.6c4.1 2.9 9 4.4 14 4.4c13.4 0 24.3-10.9 24.3-24.3V48c0-26.5-21.5-48-48-48H48C21.5 0 0 21.5 0 48z"></path></svg>
+  </span>
+    <p class="text">保存进度</p>
+  </button>
+</div>
+
+      <div style="height: 60px; width: 140px; display: flex;align-items: center;">
+    <button class="cssbuttons-io-button"  @click="nextQuestion" v-if="currentQuestionIndex < questionsConciseVersion.questionList.length-1">
+      下一题
+      <div class="icon">
+        <svg
+            height="24"
+            width="24"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M0 0h24v24H0z" fill="none"></path>
+          <path
+              d="M16.172 11l-5.364-5.364 1.414-1.414L20 12l-7.778 7.778-1.414-1.414L16.172 13H4v-2z"
+              fill="currentColor"
+          ></path>
+        </svg>
+      </div>
+    </button>
+      </div>
+
+      <div style="height: 60px; width: 100px; display: flex;align-items: center;">
+      <button class="shadow__btn" @click="handleSubmit" v-if="currentQuestionIndex === questionsConciseVersion.questionList.length-1">提交</button>
+      </div>
+      </div>
+    <div>{{currentQuestionIndex}}/28</div>
+      <div class="container">
+      <button class="left-aligned-button"
+              :style="{height:'100%', width:(currentQuestionIndex*100/27) + '%' }"></button>
+    </div>
 
   </div>
-  <TestTips v-if="currentQuestionIndex<questionsConciseVersion.questionList.length/2"/>
+
+
+
+  <TestTips/>
 </template>
 
 <style scoped>
+
 .left-aligned-button {
-  background-color: #00a982;
+  background-color:#00a982;
   border-color: transparent;
   border-radius: 0 10px 10px 0;
 }
-
+.container {
+  display: flex; /* 使用 flex 布局 */
+  align-items: flex-start; /* 设置内容垂直对齐方式为顶部对齐 */
+}
 .button {
-  --color: #00a982;
+  --color:  #00a982;
   padding: 0.8em 1.7em;
   background-color: transparent;
   border-radius: .3em;
@@ -209,12 +196,10 @@ export default {
   width: 410px;
 }
 
+
+
 .button:active {
   filter: brightness(.8);
-}
-.button:hover {
-  /* 悬停状态下的样式 */
-  color: white;
 }
 
 .bookmarkBtn {
@@ -278,6 +263,7 @@ export default {
   transition-duration: .3s;
 }
 
+
 .shadow__btn {
   padding: 10px 20px;
   border: none;
@@ -303,10 +289,14 @@ export default {
   0 0 100px #00a982;
 }
 
+
+
 .cssbuttons-io-button {
   background: #00a982;
   color: white;
   font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
   font-size: 17px;
   font-weight: 500;
   border-radius: 0.9em;
@@ -318,7 +308,7 @@ export default {
   overflow: hidden;
   position: relative;
   height: 40px;
-  padding: 0.35em 3.3em 0.35em 1.2em;
+  padding-right: 3.3em;
   cursor: pointer;
 
 }
@@ -355,6 +345,7 @@ export default {
 .cssbuttons-io-button:active .icon {
   transform: scale(0.95);
 }
+
 
 .button1 {
   display: block;
@@ -423,6 +414,7 @@ export default {
   transition: .4s;
   transform: translateX(-56px);
 }
+
 
 
 </style>

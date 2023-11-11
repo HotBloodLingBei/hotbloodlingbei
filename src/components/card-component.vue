@@ -40,16 +40,6 @@ export default {
 </template>
 
 <style scoped>
-.title {
-    font-size: 10px;
-    font-weight: bold;
-}
-
-.content {
-    font-size: 10px;
-}
-
-
 .card {
     width: 600px;
     height: 250px;

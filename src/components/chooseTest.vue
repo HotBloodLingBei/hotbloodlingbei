@@ -13,6 +13,7 @@
   <div class="imgContainer">
     <div class="boxContainer"><div class="check-box">
       <img
+              
           :src="image1Src"
           :style="{ filter: image1Filtered ? 'none' : 'grayscale(100%)' }"
           class="responsive-image"
@@ -40,10 +41,6 @@
       <span>进入测试</span>
     </button>
   </div>
-  <MyModal
-      v-if="isModalVisible"
-      content="请先选择测试类型"
-      />
 </template>
 
 <style scoped>
@@ -60,6 +57,15 @@
     justify-content: center;
     align-items: center;
 }
+.logoContainer{
+  padding: 20px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 .responsive-image {
   width: 100%;
   height: 100%;
@@ -72,6 +78,11 @@
   justify-content: center;
   align-items: center;
 }
+.responsive-logo {
+  width: 10%;
+  height: 10%;
+  object-fit:contain;
+}
 .check-box{
   cursor: pointer;
   border-radius: 24px;
@@ -79,10 +90,6 @@
   box-shadow:  5px 5px 10px #bebebe,
   -5px -5px 10px #ffffff;
   padding: 10px;
-  transition: transform 0.3s ease;
-}
-.check-box:hover{
-  transform: translateY(-10px);
 }
 button {
   cursor: pointer;
@@ -113,21 +120,15 @@ button:hover svg {
 button:hover span {
   transform: translateX(7px);
 }
-button:active {
-  filter: brightness(.8);
-}
+
 </style>
 
 <script>
 import store  from '@/store/store.js'
 import  questionsConciseVersion  from '@/data/questionsConciseVersion.js'
-import questionsAccurateVersion from "@/data/questionsAccurateVersion"
-import MyModal from "@/components/MyModal.vue";
+import questionsAccurateVersion from "@/data/questionsAccurateVersion";
 export default {
   name: "chooseTest",
-  components: {
-    MyModal
-  },
   data() {
     return {
       questionsConciseVersion,
@@ -138,8 +139,7 @@ export default {
       image1Filtered: false,
       image2Filtered: false,
       imageSrc:'https://raw.githubusercontent.com/DXHeroes/knowledge-base-content/master/files/16personalities.png',
-      logoSrc:require('../assets/mbti.jpg'),
-      isModalVisible: false,
+      logoSrc:require('../assets/mbti.jpg')
     };
   },
   methods: {
@@ -151,6 +151,16 @@ export default {
       this.image1Filtered = false;
       this.image2Filtered = true;
     },
+    setLocalStorageToStore(){
+      let testType=localStorage.getItem("testType")
+      let Scores=localStorage.getItem("Scores");
+      if(testType&&Scores){
+        testType=JSON.parse(localStorage.getItem("testType"));
+        Scores=JSON.parse(localStorage.getItem("Scores"));
+
+      }
+    },
+
     handleJump(){
       // 初始化变量
       let StrTestType=localStorage.getItem("testType")
@@ -199,7 +209,7 @@ export default {
         this.$router.push('/testPage2')
       }
       else {
-        this.isModalVisible=true;
+        alert("请选择测试类型！");
       }
     }
   },

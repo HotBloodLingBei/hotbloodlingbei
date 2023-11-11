@@ -58,6 +58,10 @@ export default {
     font-style: normal;
 }
 
+.title {
+    font-size: 30px;
+}
+
 .button {
     margin-left: 20px;
 //margin-right: 0px;
@@ -74,9 +78,7 @@ export default {
 }
 
 .ButtonContainer {
-//height: 100px; //width: 100%; display: flex; justify-content: space-between; display: flex; //flex-direction: column; align-items: center; padding: 0 25%; margin-bottom: 20px;
-    margin-top: 0px;
-    justify-content: space-between;
+//height: 100px; //width: 100%; display: flex; justify-content: space-between; display: flex; //flex-direction: column; align-items: center; padding: 0 25%; margin-bottom: 20px; margin-top: 0px; justify-content: space-between;
 }
 
 .mbtiImage {
@@ -86,9 +88,7 @@ export default {
 
 .card {
     width: 75%;
-//height: 800px; margin-top: 70px; margin-bottom: 30px; margin-left: auto;
-    margin-right: auto;
-    background: white;
+//height: 800px; margin-top: 70px; margin-bottom: 30px; margin-left: auto; margin-right: auto; background: white;
     border-radius: 30px;
     box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
     transition: 0.2s ease-in-out;
@@ -104,7 +104,6 @@ export default {
     display: flex;
     justify-content: left;
 }
-
 
 
 .title {

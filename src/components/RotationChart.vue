@@ -114,7 +114,7 @@ export default {
 
 <template>
     <div id="app">
-<!--        这里设置了超出的部分裁剪-->
+        <!--        这里设置了超出的部分裁剪-->
         <div class="SwiperBox" ref="SwiperBox" v-on:mouseenter="MouseFun('移入')" v-on:mouseleave="MouseFun('移出')">
             <!-- 这里设置了水平对齐，通过设置left的值（在上衣容器中的位置）实现滑动的效果 -->
             <div class="imgBox" v-bind:style="{left:`-${leftVal}px`,transition:ition+'s'}">
@@ -122,18 +122,18 @@ export default {
                     <cardComponent v-bind:imageUrl="imgList[index]" v-bind:pictureindex="imgShow"/>
                 </div>
                 <cardComponent v-bind:imageUrl="imgList[0]" v-bind:pictureindex="imgShow"/>
-<!--                <img v-bind:src="item" v-for="(item,index) in imgList" :key="index"/>-->
+                <!--                <img v-bind:src="item" v-for="(item,index) in imgList" :key="index"/>-->
                 <!-- 复制第一张放到最后,以实现无缝无线循环滚动效果 -->
-<!--                alt是替代属性，当无法显示时显示alt-->
-<!--                <img v-bind:src="imgList[0]" alt=""/>-->
+                <!--                alt是替代属性，当无法显示时显示alt-->
+                <!--                <img v-bind:src="imgList[0]" alt=""/>-->
             </div>
             <!-- 左箭头按钮 -->
-<!--            <div class="leftBtn" v-on:click="throttle(PrevFun)">&larr;</div>-->
+            <!--            <div class="leftBtn" v-on:click="throttle(PrevFun)">&larr;</div>-->
             <svg  t="1699444724168" class="icon leftBtn"  v-on:click="throttle(PrevFun)" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1252" width="200" height="200"><path d="M512 0C794.774588 0 1024 229.225412 1024 512S794.774588 1024 512 1024s-512-229.225412-512-512 229.225412-512 512-512z m0 60.235294c-249.49458799 0-451.764706 202.270118-451.764706 451.764706 0 249.49458799 202.270118 451.764706 451.764706 451.764706C761.494588 963.764706 963.764706 761.494588 963.764706 512c0-249.49458799-202.270118-451.764706-451.764706-451.764706z" fill="#bfbfbf" p-id="1253"></path><path d="M359.273412 469.413647L572.235294 256.45176501l42.586353 42.58635299L401.88988199 512l212.93176501 212.961882L572.235294 767.54823499 316.68705901 512l42.58635299-42.586353z" fill="#bfbfbf" p-id="1254"></path></svg>
             <!-- 右箭头按钮 -->
             <svg  t="1699445470465" class="icon rightBtn" v-on:click="throttle(NextFun)" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1799" width="200" height="200"><path d="M434.72399133 714.10648519c-5.94430862 0-11.88861725-2.37772345-16.64406415-7.13317034-9.51089379-9.51089379-9.51089379-24.37166421 0-33.88255802l178.32925184-178.3292507c9.51089379-9.51089379 24.37166421-9.51089379 33.88255801 0 9.51089379 9.51089379 9.51089379 24.37166421 0 33.88255688l-178.32925184 178.32925184c-5.34987776 4.7554469-11.29418638 7.13317035-17.23849386 7.13317034z" p-id="1800" fill="#8a8a8a"></path><path d="M613.05324317 535.77723335c-5.94430862 0-11.88861725-2.37772345-16.64406415-7.13317034l-178.32925184-178.32925071c-9.51089379-9.51089379-9.51089379-24.37166421 0-33.88255801 9.51089379-9.51089379 24.37166421-9.51089379 33.88255801 0l178.32925184 178.32925184c9.51089379 9.51089379 9.51089379 24.37166421 0 33.88255688-5.34987776 4.7554469-11.29418638 7.13317035-17.23849386 7.13317034z" p-id="1801" fill="#8a8a8a"></path><path d="M512 987.54467157c-262.144 0-475.54467157-213.40067157-475.54467157-475.54467157s213.40067157-475.54467157 475.54467157-475.54467157 475.54467157 213.40067157 475.54467157 475.54467157-213.40067157 475.54467157-475.54467157 475.54467157z m0-903.5348753c-235.9890432 0-427.99020373 192.00116053-427.99020373 427.99020373s192.00116053 427.99020373 427.99020373 427.99020373 427.99020373-192.00116053 427.99020373-427.99020373-192.00116053-427.99020373-427.99020373-427.99020373z" p-id="1802" fill="#8a8a8a"></path></svg>
-<!--            <svg t="1699445144854" class="icon rightBtn" v-on:click="throttle(NextFun)" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1451" width="200" height="200"><path d="M512 1024c282.717 0 512-229.19 512-512S794.717 0 512 0C229.19 0 0 229.19 0 512s229.19 512 512 512z m0-960a448 448 0 0 1 448 448c0 247.436-200.518 448.093-448 448.093S63.953 759.483 63.953 512C63.953 264.564 264.564 64 512 64zM366.871 785.129c12.474 12.567 32.722 12.567 45.196 0L657.082 540.16a31.511 31.511 0 0 0 8.332-28.16 31.604 31.604 0 0 0-8.378-28.16L412.113 238.778a31.977 31.977 0 1 0-45.149 45.289L594.664 512l-227.84 227.84a31.93 31.93 0 0 0 0 45.289z" p-id="1452"></path></svg>-->
-<!--            <div class="rightBtn" v-on:click="throttle(NextFun)">&rarr;</div>-->
+            <!--            <svg t="1699445144854" class="icon rightBtn" v-on:click="throttle(NextFun)" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1451" width="200" height="200"><path d="M512 1024c282.717 0 512-229.19 512-512S794.717 0 512 0C229.19 0 0 229.19 0 512s229.19 512 512 512z m0-960a448 448 0 0 1 448 448c0 247.436-200.518 448.093-448 448.093S63.953 759.483 63.953 512C63.953 264.564 264.564 64 512 64zM366.871 785.129c12.474 12.567 32.722 12.567 45.196 0L657.082 540.16a31.511 31.511 0 0 0 8.332-28.16 31.604 31.604 0 0 0-8.378-28.16L412.113 238.778a31.977 31.977 0 1 0-45.149 45.289L594.664 512l-227.84 227.84a31.93 31.93 0 0 0 0 45.289z" p-id="1452"></path></svg>-->
+            <!--            <div class="rightBtn" v-on:click="throttle(NextFun)">&rarr;</div>-->
             <!-- 下方指示点容器 -->
             <div class="instBox">
                 <div v-on:click="instFun(index)" v-for="(item,index) in imgList.length" :key="index"
@@ -165,7 +165,7 @@ overflow: hidden;：设置溢出内容的部分隐藏，实现内容超出容器
     width: 600px;
     height: 250px;
     box-sizing: border-box;
-    cursor: pointer;
+    /*cursor: pointer;*/
     overflow: hidden;
 }
 
@@ -201,9 +201,7 @@ justify-content: flex-start;：将容器内部元素左对齐。
     display: flex;
     justify-content: center;
     align-items: center;
-    //background: rgba(109, 109, 109, 0.445);
-    //color: #fff;
-    border-radius: 50%;
+//background: rgba(109, 109, 109, 0.445); //color: #fff; border-radius: 50%;
     cursor: pointer;
     font-size: 12px;
     font-weight: 500;
@@ -211,7 +209,7 @@ justify-content: flex-start;：将容器内部元素左对齐。
 }
 
 .leftBtn {
-color:rgba(109, 109, 109, 0.445);
+    color: rgba(109, 109, 109, 0.445);
     left: 10px;
 }
 
@@ -245,8 +243,8 @@ color:rgba(109, 109, 109, 0.445);
 }
 
 .instActv {
-    border: 1px solid yellow;
-    background: yellow;
+    border: 1px solid #00838d;
+    background: #009087;
 }
 
 #app {

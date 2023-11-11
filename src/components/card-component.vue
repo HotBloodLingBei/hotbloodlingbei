@@ -40,6 +40,16 @@ export default {
 </template>
 
 <style scoped>
+.title {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.content {
+    font-size: 10px;
+}
+
+
 .card {
     width: 600px;
     height: 250px;
@@ -68,7 +78,7 @@ export default {
     backdrop-filter: blur(30px);
     background-color: rgba(65, 65, 65, 0.308);
     border: 1px solid rgba(255, 255, 255, 0.089);
-    /*cursor: pointer;*/
+    cursor: pointer;
 }
 
 .picture-container{

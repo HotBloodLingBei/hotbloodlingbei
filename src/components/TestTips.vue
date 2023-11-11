@@ -58,7 +58,7 @@
 .test-tips {
   position: fixed;
   right: 20px; /* 调整左侧距离 */
-  top: 50%; /* 垂直居中 */
+  bottom: 0; /* 垂直居中 */
   transform: translateY(-50%);
   background-color: #ffffff;
   border: 1px solid #ccc;

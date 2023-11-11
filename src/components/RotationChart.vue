@@ -16,22 +16,22 @@ export default {
             //     {imgUrl: "https://imgcps.jd.com/ling4/100026667910/5Lqs6YCJ5aW96LSn/5L2g5YC85b6X5oul5pyJ/p-5f3a47329785549f6bc7a6e3/d7b3695b/cr/s/q.jpg"},
             //     {imgUrl: "https://img30.360buyimg.com/pop/s590x470_jfs/t1/201288/25/23710/64955/62f070fdE95cb4f47/22b916d938a43bb5.jpg"},
             // ],
-            imgList: [PersonPictureLink.enfp,
-                PersonPictureLink.enfj,
-                PersonPictureLink.entj,
-                PersonPictureLink.entp,
-                PersonPictureLink.esfj,
-                PersonPictureLink.estj,
-                PersonPictureLink.esfp,
-                PersonPictureLink.estp,
-                PersonPictureLink.infj,
-                PersonPictureLink.infp,
-                PersonPictureLink.intj,
-                PersonPictureLink.intp,
-                PersonPictureLink.isfj,
-                PersonPictureLink.istj,
-                PersonPictureLink.isfp,
-                PersonPictureLink.istp],
+            imgList: [PersonPictureLink.enfpcampaigner,
+                PersonPictureLink.enfjprotagonist,
+                PersonPictureLink.entjcommander,
+                PersonPictureLink.entpdebater,
+                PersonPictureLink.esfjconsul,
+            PersonPictureLink.estjexecutive,
+            PersonPictureLink.esfpentertainer,
+            PersonPictureLink.estpentrepreneur,
+            PersonPictureLink.infjadvocate,
+            PersonPictureLink.infpmediator,
+            PersonPictureLink.intjarchitect,
+            PersonPictureLink.intplogician,
+            PersonPictureLink.isfjdefender,
+                PersonPictureLink.istjlogistician,
+            PersonPictureLink.isfpadventurer,
+                PersonPictureLink.istpvirtuoso],
             leftVal: 0, // 轮播图盒子的偏移值
             flag: true, // 用来节流防止重复点击
             start: null, // 自动执行下一张定的时器
@@ -165,7 +165,7 @@ overflow: hidden;：设置溢出内容的部分隐藏，实现内容超出容器
     width: 600px;
     height: 250px;
     box-sizing: border-box;
-    cursor: pointer;
+    /*cursor: pointer;*/
     overflow: hidden;
 }
 
@@ -245,8 +245,8 @@ color:rgba(109, 109, 109, 0.445);
 }
 
 .instActv {
-    border: 1px solid yellow;
-    background: yellow;
+    border: 1px solid #00838d;
+    background: #009087;
 }
 
 #app {

@@ -105,12 +105,12 @@ export default {
 
 
 .title {
-    font-family: ”杨任东竹石体”;
+    font-size: 30px;
+    font-family: ”杨任东竹石体“ ”宋体” sans-serif;
     width: 60%;
     text-align: center;
     display: flex;
     align-items: center;
-
 }
 
 .textContainer {

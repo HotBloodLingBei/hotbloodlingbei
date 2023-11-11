@@ -45,7 +45,7 @@ export default {
 }
 
 .content {
-    font-size: 10px;
+    font-size: 13px;
 }
 
 .card {

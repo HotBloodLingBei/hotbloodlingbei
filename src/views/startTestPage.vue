@@ -1,13 +1,11 @@
 <script>
 import RotationChart from '../components/RotationChart.vue'
 import chooseTest from "@/components/chooseTest.vue";
-import screenshotButton from "@/components/screenshot-button.vue";
 export default {
     name: "startTestPage",
     components:{
       RotationChart,
       chooseTest,
-        screenshotButton
     }
 }
 
@@ -17,7 +15,6 @@ export default {
     <div class="contentBox">
 <RotationChart class="rotationChart"/>
   <chooseTest/>
-  <screenshot-button>截图</screenshot-button>
     </div>
 </template>
 
@@ -27,7 +24,8 @@ export default {
     top: 0; /* 将轮播图置顶 */
 }
 .contentBox{
-  display: flex;
+    display: flex;
     flex-direction: column;
+    align-items: center;
 }
 </style>

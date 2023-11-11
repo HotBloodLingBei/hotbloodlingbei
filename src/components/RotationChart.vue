@@ -251,6 +251,7 @@ color:rgba(109, 109, 109, 0.445);
 
 #app {
     width: 100%;
+    margin-top: 50px;
     padding: 0px;
     display: flex;
     justify-content: center;

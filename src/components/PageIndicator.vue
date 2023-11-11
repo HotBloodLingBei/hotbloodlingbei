@@ -67,16 +67,16 @@ export default {
 
 <style scoped>
 .page-indicator {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #eee;
-  display: flex;
-  justify-content: space-around;
-  padding: 5px;
-  border-bottom: 1px solid #ccc;
-  z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #eee;
+    display: flex;
+    justify-content: space-around;
+    padding: 2px;
+    border-bottom: 1px solid #ccc;
+    z-index: 100;
 }
 
 .indicator-item {

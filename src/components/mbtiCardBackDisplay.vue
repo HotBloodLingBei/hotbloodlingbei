@@ -5,7 +5,8 @@
     <p class="title">{{mbtiType}}</p>
     <p class="text">{{Description}}</p>
   </div>
-  <info-card :detail="detail" :mbti-type="mbtiType" :imageSrc="imageSrc" v-show="showInfo" @exit="click"></info-card>
+  <info-card class="info-card" :detail="detail" :mbti-type="mbtiType" :imageSrc="imageSrc" v-show="showInfo"
+             @exit="click"></info-card>
 
 </template>
 
@@ -56,6 +57,7 @@ export default {
   text-align: center;
   margin: 0;
 }
+
 
 .text {
   font-size: 0.9em;

@@ -77,7 +77,6 @@ export default {
   right: 0;
   background-color: #00838d;
   border-radius: 0 4px 0 32px;
-  cursor: pointer;
 }
 
 .exit {

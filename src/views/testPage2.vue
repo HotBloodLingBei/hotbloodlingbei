@@ -19,6 +19,9 @@ export default {
     MyModal,
   },
   methods: {
+    closeModal() {
+      this.isModalVisible = false;
+    },
     nextQuestion() {
       // 更新 currentQuestionIndex 的值
       if (this.currentQuestionIndex < questionsAccurateVersion.questionList.length - 1) {
@@ -204,6 +207,7 @@ export default {
   <MyModal
       v-if="isModalVisible"
       content="请完成全部的测试题目"
+      @close="closeModal"
   />
 </template>
 

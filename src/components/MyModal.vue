@@ -79,6 +79,9 @@ export default {
     border-radius: 0 4px 0 32px;
     cursor: pointer;
 }
+.go-corner:active{
+  filter: brightness(.8);
+}
 
 .exit {
   margin-top: -4px;

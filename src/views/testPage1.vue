@@ -424,6 +424,7 @@ export default {
     outline: none;
     background-color: transparent;
     border: 0;
+    cursor: pointer;
 }
 
 .button1:before,

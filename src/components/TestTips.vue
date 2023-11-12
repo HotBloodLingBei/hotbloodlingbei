@@ -91,6 +91,7 @@
   transition: all 0.2s ease;
   border: none;
   background: none;
+  cursor: pointer;
 }
 
 .cta:before {

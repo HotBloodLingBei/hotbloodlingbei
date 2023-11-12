@@ -249,8 +249,8 @@ justify-content: flex-start;：将容器内部元素左对齐。
 
 #app {
     width: 100%;
-    margin-top: 80px;
-    padding: 20px;
+    margin-top: 50px;
+    padding: 0px;
     display: flex;
     justify-content: center;
 }

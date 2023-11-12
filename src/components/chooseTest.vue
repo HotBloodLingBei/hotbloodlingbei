@@ -55,12 +55,12 @@
 
 .boxContainer {
     padding: 10px;
-  margin: 20px;
+    margin: 10px;
 }
 
 .imgContainer {
     padding: 0;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     display: flex;
     width: 100%;
     height: 100%;

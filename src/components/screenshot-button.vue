@@ -1,6 +1,8 @@
 <script>
 import html2canvas from 'html2canvas';
 import Moment from 'moment';
+import store from '@/store/store';
+
 export default {
     name: "screenshot-button",
     data() {
@@ -11,44 +13,51 @@ export default {
 //截图方法
         //截图
         screenShot() {
+            // 改变截图的状态
+            store.screenshotStatus = 1;
             //获取页面dom
             //这里的html标签是获取页面最大的dom元素；根据实际业务场景自行更改
-            const el = document.querySelector('html');
-            html2canvas(el, {allowTaint: true}).then((canvas) => {
-                //document.body.appendChild(canvas)  页面布局会乱
-                //转换base64
-                const capture = canvas.toDataURL('image/png');
-                //下载浏览器弹出下载信息的属性
-                const saveInfo = {
-                    //导出文件格式自己定义，我这里用的是时间作为文件名
-                    'download': Moment().format("YYYY-MM-DD HH:mm:ss") + `.png`,
-                    'href': capture
-                };
-                //下载，浏览器弹出下载文件提示
-                this.downloadFile(saveInfo);
+            function temp() {
+                const el = document.querySelector('html');
 
-                //调用保存接口 如果需要后台保存，放开注释
-                /*   uploadImage({capture:capture}).then(res => {
-                     if (res.code == 200) {
-                       this.$message.success("截取成功！")
-                     }
-                   });*/
-            })
+                function downloadFile(saveInfo) {
+                    const element = document.createElement('a');
+                    element.style.display = 'none';
+                    for (const key in saveInfo) {
+                        element.setAttribute(key, saveInfo[key]);
+                    }
+                    document.body.appendChild(element);
+                    element.click();
+                    setTimeout(() => {
+                        document.body.removeChild(element);
+                    }, 300)
+                }
+
+                html2canvas(el, {allowTaint: true}).then((canvas) => {
+                    //document.body.appendChild(canvas)  页面布局会乱
+                    //转换base64
+                    const capture = canvas.toDataURL('image/png');
+                    //下载浏览器弹出下载信息的属性
+                    const saveInfo = {
+                        //导出文件格式自己定义，我这里用的是时间作为文件名
+                        'download': Moment().format("YYYY-MM-DD HH:mm:ss") + `.png`,
+                        'href': capture
+                    };
+                    //下载，浏览器弹出下载文件提示
+                    downloadFile(saveInfo);
+                });
+            }
+
+            // 将截图的状态改为0
+            setTimeout(temp, 1000)
+            setTimeout(() => {
+                store.screenshotStatus = 0;
+            }, 3000)
         },
 
         //下载截图
-        downloadFile(saveInfo) {
-            const element = document.createElement('a');
-            element.style.display = 'none';
-            for (const key in saveInfo) {
-                element.setAttribute(key, saveInfo[key]);
-            }
-            document.body.appendChild(element);
-            element.click();
-            setTimeout(() => {
-                document.body.removeChild(element);
-            }, 300)
-        }
+
+
     }
 }
 </script>
@@ -107,7 +116,10 @@ button:hover {
     color: #fff;
     border: 1px solid rgb(40, 144, 241);
 }
+
 button:hover::before {
     box-shadow: inset 0 0 0 10em rgb(40, 144, 241);
 }
+
+
 </style>

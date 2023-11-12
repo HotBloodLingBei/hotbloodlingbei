@@ -1,29 +1,25 @@
-<script setup>
-
-</script>
-
 <template>
-  <div class="page-indicator">
-  <div
-      class="indicator-item"
-      :class="{ active: this.$route.path === '/' }"
-      @click="navigateTo('/')"
-  >
-    开始测试
-  </div>
-  <div
-      class="indicator-item"
-      :class="{ active: this.$route.path === '/mbtiInstructionPage' }"
-      @click="navigateTo('/mbtiInstructionPage')"
-  >
-    MBTI介绍
-  </div>
-  <div
-      class="indicator-item"
-      :class="{ active: this.$route.path === '/resultPage' }"
-      @click="handleClick"
-  >
-      测试结果
+    <div :class="['page-indicator', store.screenshotStatus===0?'fixable':'']">
+        <div
+                class="indicator-item"
+                :class="{ active: this.$route.path === '/' }"
+                @click="navigateTo('/')"
+        >
+            开始测试
+        </div>
+        <div
+                class="indicator-item"
+                :class="{ active: this.$route.path === '/mbtiInstructionPage' }"
+                @click="navigateTo('/mbtiInstructionPage')"
+        >
+            MBTI介绍
+        </div>
+        <div
+                class="indicator-item"
+                :class="{ active: this.$route.path === '/resultPage' }"
+                @click="handleClick"
+        >
+            测试结果
     <MyModal
         v-if="isModalVisible"
         content="请先完成测试"
@@ -38,26 +34,32 @@ import MyModal from "@/components/MyModal.vue"; // 引入弹窗组件
 import store from "@/store/store";
 
 export default {
-  components: {
-    MyModal
-  },
-  data() {
-    return {
-      isModalVisible: false, // 控制弹窗是否显示
-    };
-  },
-
-  methods: {
-    navigateTo(path) {
-      this.$router.push(path);
+    name: "PageIndicator",
+    computed: {
+        store() {
+            return store
+        }
+    },
+    components: {
+        MyModal
+    },
+    data() {
+        return {
+            isModalVisible: false, // 控制弹窗是否显示
+        };
     },
 
-    showModal() {
-      this.isModalVisible = true;
-    },
+    methods: {
+        navigateTo(path) {
+            this.$router.push(path);
+        },
 
-    closeModal() {
-      this.isModalVisible = false;
+        showModal() {
+            this.isModalVisible = true;
+        },
+
+        closeModal() {
+            this.isModalVisible = false;
     },
 
     handleClick() {
@@ -73,15 +75,20 @@ export default {
 </script>
 
 <style scoped>
-.page-indicator {
+
+.fixable {
     position: fixed;
+}
+
+.page-indicator {
+
     top: 0;
     left: 0;
     width: 100%;
     background-color: #eee;
     display: flex;
     justify-content: space-around;
-    padding: 5px;
+    padding: 2px;
     border-bottom: 1px solid #ccc;
     z-index: 100;
 }

@@ -48,6 +48,7 @@
     <MyModal
             v-if="isModalVisible"
             content="请先选择测试类型"
+            @close="closeModal"
     />
 </template>
 
@@ -263,7 +264,10 @@ export default {
             else {
                 this.isModalVisible = true;
             }
-        }
+        },
+      closeModal() {
+        this.isModalVisible = false;
+      },
     },
 }
 

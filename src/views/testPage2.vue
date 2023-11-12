@@ -100,6 +100,7 @@ export default {
 <template>
   <div style="padding: 5%">
     <div class="questionContainer">
+      <div class="card-number">{{this.currentQuestionIndex+1}}</div>
       <div style="  height: 200px;  display: flex; justify-content: center;align-items: center;">
         {{ questionsAccurateVersion.questionList[this.currentQuestionIndex].description }}
       </div>
@@ -207,6 +208,18 @@ export default {
 </template>
 
 <style scoped>
+.card-number{
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 30px;
+  left: 40px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow:  20px 20px 60px #d9d9d9,
+  -20px -20px 60px #ffffff;
+  display: flex; justify-content: center;align-items: center;
+}
 .questionContainer{
   padding: 5%;
   border-radius: 50px;
@@ -215,6 +228,7 @@ export default {
   -20px -20px 60px #ffffff;
   transition: 0.2s ease-in-out;
   background: linear-gradient(90deg, #FEE2F8, #DCF8EF );
+  position: relative;
 }
 .questionContainer:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);

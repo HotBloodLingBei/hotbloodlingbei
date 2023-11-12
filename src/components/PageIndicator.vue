@@ -6,21 +6,21 @@
   <div class="page-indicator">
   <div
       class="indicator-item"
-      :class="{ active: currentPage === '/' }"
+      :class="{ active: this.$route.path === '/' }"
       @click="navigateTo('/')"
   >
     开始测试
   </div>
   <div
       class="indicator-item"
-      :class="{ active: currentPage === '/mbtiInstructionPage' }"
+      :class="{ active: this.$route.path === '/mbtiInstructionPage' }"
       @click="navigateTo('/mbtiInstructionPage')"
   >
     MBTI介绍
   </div>
   <div
       class="indicator-item"
-      :class="{ active: currentPage === '/resultPage' }"
+      :class="{ active: this.$route.path === '/resultPage' }"
       @click="handleClick"
   >
       测试结果
@@ -44,13 +44,11 @@ export default {
   data() {
     return {
       isModalVisible: false, // 控制弹窗是否显示
-      currentPage: this.$route.path
     };
   },
 
   methods: {
     navigateTo(path) {
-      this.currentPage = path;
       this.$router.push(path);
     },
 

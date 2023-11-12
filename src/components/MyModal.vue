@@ -3,12 +3,12 @@
 </script>
 
 <template>
-  <div class="modal" v-show="showModal">
+  <div class="modal">
     <div class="card1">
     <div class="modal-content">
       <p>{{ content }}</p>
     </div>
-      <div class="go-corner" v-on:click="showModal = !showModal">
+      <div class="go-corner" @click="closeModal">
         <div class="exit">
           ×
         </div>
@@ -19,15 +19,14 @@
 
 <script>
 export default {
-  data() {
-    return {
-      showModal: true,
-    };
-  },
   props: {
     content: String,
   },
-
+  methods: {
+    closeModal() {
+      this.$emit('close');
+    },
+  },
 };
 </script>
 

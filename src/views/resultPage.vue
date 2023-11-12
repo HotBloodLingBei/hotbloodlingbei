@@ -83,8 +83,8 @@ export default {
 }
 
 .mbtiImage {
-    width: 40%;
-    height: 100%;
+    margin-left: 100px;
+    object-fit: contain;
 }
 
 .card {
@@ -107,12 +107,12 @@ export default {
     border-top-right-radius: 30px;
     background: linear-gradient(#e66465, #9198e5);
     display: flex;
-    justify-content: left;
+    justify-content: center;
 }
 
 
 .title {
-    font-family: ”杨任东竹石体”;
+    font-family: Microsoft YaHei, sans-serif;
     width: 60%;
     text-align: center;
     display: flex;
@@ -122,7 +122,6 @@ export default {
 
 .textContainer {
     margin: 20px;
-    display: flex;
     flex-direction: column;
     display: inline-block;
     max-width: max-content;
@@ -130,7 +129,7 @@ export default {
 
 
 .card:hover {
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 

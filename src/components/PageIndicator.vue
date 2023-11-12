@@ -20,12 +20,11 @@
                 @click="handleClick"
         >
             测试结果
-    <MyModal
-        v-if="isModalVisible"
+        </div>
+      <MyModal v-if="isModalVisible === true"
         content="请先完成测试"
         @close="closeModal">
     </MyModal>
-  </div>
   </div>
 </template>
 
@@ -75,13 +74,15 @@ export default {
 </script>
 
 <style scoped>
-
 .fixable {
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
 }
 
 .page-indicator {
-
     top: 0;
     left: 0;
     width: 100%;

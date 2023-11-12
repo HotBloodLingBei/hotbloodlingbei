@@ -39,10 +39,13 @@ export default {
       }
     },
     saveProgress() {
-      localStorage.setItem("testType", JSON.stringify(store.testType))
-      localStorage.setItem("Scores", JSON.stringify(store.Scores))
+      localStorage.removeItem("testType2")
+      localStorage.removeItem("Scores2")
+      localStorage.setItem("testType2", JSON.stringify(store.testType))
+      localStorage.setItem("Scores2", JSON.stringify(store.Scores))
     },
     handleSubmit() {
+      this.isModalVisible=false
       let EIvalue=0,NSvalue=0,FTvalue=0,JPvalue=0
       for (let eachAnswer of store.Scores) {
         if(eachAnswer.valid===0){
@@ -81,12 +84,13 @@ export default {
           type+='p'
         }
         store.mbtiType=type
+        console.log(store)
         this.$router.push('/resultPage')
-        store.testType=""
-        store.Scores=[]
-        store.initialIdx=0
-        localStorage.removeItem("testType")
-        localStorage.removeItem("Scores")
+        // store.testType=""
+        // store.Scores=[]
+        // store.initialIdx=0
+        localStorage.removeItem("testType2")
+        localStorage.removeItem("Scores2")
       }
     }
   }

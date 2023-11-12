@@ -89,7 +89,11 @@ export default {
 
 .card {
     width: 75%;
-//height: 800px; margin-top: 70px; margin-bottom: 30px; margin-left: auto; margin-right: auto; background: white;
+  margin-top: 70px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
     border-radius: 30px;
     box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
     transition: 0.2s ease-in-out;

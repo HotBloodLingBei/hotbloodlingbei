@@ -39,10 +39,13 @@ export default {
             }
         },
         saveProgress() {
-            localStorage.setItem("testType", JSON.stringify(store.testType))
-            localStorage.setItem("Scores", JSON.stringify(store.Scores))
+            localStorage.removeItem("testType1")
+            localStorage.removeItem("Scores1")
+            localStorage.setItem("testType1", JSON.stringify(store.testType))
+            localStorage.setItem("Scores1", JSON.stringify(store.Scores))
         },
         handleSubmit() {
+          this.isModalVisible=false
           let EIvalue=0,NSvalue=0,FTvalue=0,JPvalue=0
           for (let eachAnswer of store.Scores) {
             if(eachAnswer.valid===0){
@@ -82,13 +85,16 @@ export default {
             }
             store.mbtiType=type
             this.$router.push('/resultPage')
-            store.testType=""
-            store.Scores=[]
-            store.initialIdx=0
-            localStorage.removeItem("testType")
-            localStorage.removeItem("Scores")
+            // store.testType=""
+            // store.Scores=[]
+            // store.initialIdx=0
+            localStorage.removeItem("testType1")
+            localStorage.removeItem("Scores1")
           }
-        }
+        },
+      debug(){
+          console.log(this.currentQuestionIndex)
+      }
     }
 }
 </script>
@@ -96,6 +102,7 @@ export default {
 <template>
     <div style="padding: 5%">
         <div class="questionContainer">
+<!--          题目容器-->
             <div style="  height: 200px;  display: flex; justify-content: center;align-items: center;">
                 {{ questionsConciseVersion.questionList[this.currentQuestionIndex].description }}
             </div>

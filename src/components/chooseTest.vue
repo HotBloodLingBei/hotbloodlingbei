@@ -187,38 +187,38 @@ export default {
             this.image1Filtered = false;
             this.image2Filtered = true;
         },
-        // 取变量testType和Scores至Store
-        setLocalStorageToStore() {
-            let testType = localStorage.getItem("testType")
-            let Scores = localStorage.getItem("Scores");
-            if (testType && Scores) {
-                testType = JSON.parse(localStorage.getItem("testType"));
-                Scores = JSON.parse(localStorage.getItem("Scores"));
-
-            }
-        },
-        // 处理跳转
-        handleJump() {
+// 取变量testType和Scores至Store
+// 处理跳转
+      handleJump() {
             // 初始化变量
-            let StrTestType = localStorage.getItem("testType")
-            let StrScores = localStorage.getItem("Scores");
-            let localStorageExistStatus = false;
+            let StrTestType1 = localStorage.getItem("testType1")
+            let StrTestType2 = localStorage.getItem("testType2")
+            let StrScores1 = localStorage.getItem("Scores1")
+            let StrScores2 = localStorage.getItem("Scores2")
+            let localStorageExistStatus1 = false;
+            let localStorageExistStatus2 = false;
             // localStorage存在则将结果
-            if (StrTestType && StrScores) {
-                var testType = JSON.parse(localStorage.getItem("testType"));
-                var Scores = JSON.parse(localStorage.getItem("Scores"));
-                localStorageExistStatus = true
+            if (StrTestType1 && StrScores1) {
+                var testType1 = JSON.parse(StrTestType1);
+                var Scores1 = JSON.parse(StrScores1);
+                localStorageExistStatus1 = true
             }
-            console.log(localStorageExistStatus + StrTestType + StrScores)
+            if (StrTestType2 && StrScores2) {
+                var testType2 = JSON.parse(StrTestType2);
+                var Scores2 = JSON.parse(StrScores2);
+                localStorageExistStatus2 = true
+            }
+            //console.log(localStorageExistStatus + StrTestType + StrScores)
             // 在选了第一个的情况
             if (this.image1Filtered === true) {
                 // 处理存在时的逻辑，并且testType与标准版相同，直接恢复store
-                if (localStorageExistStatus === true && testType === "conciseVersion") {
-                    store.Scores = Scores
-                    store.testType = testType
+                if (localStorageExistStatus1 === true) {
+                    store.Scores = Scores1
+                    store.testType = testType1
                 } else {//处理不存在的逻辑
                     store.testType = "conciseVersion"
                     //         用于区分初始值0和赋值0，判断答案是否有效
+                    store.Scores=[]
                     for (let eachQuestion of questionsConciseVersion.questionList) {
                         store.Scores.push({dimension: eachQuestion.dimension, value: 0, valid: 0})
                     }
@@ -239,11 +239,12 @@ export default {
             }
             //     在选择第二个的情况下
             else if (this.image2Filtered === true) {
-                if (localStorageExistStatus === true && testType === "accurateVersion") {
-                    store.Scores = Scores
-                    store.testType = testType
+                if (localStorageExistStatus2 === true) {
+                    store.Scores = Scores2
+                    store.testType = testType2
                 } else {//处理不存在的逻辑
                     store.testType = "accurateVersion"
+                    store.Scores=[]
                     for (let eachQuestion of questionsAccurateVersion.questionList) {
                         store.Scores.push({dimension: eachQuestion.dimension, value: 0, valid: 0})
                     }
@@ -258,7 +259,8 @@ export default {
                     store.initialIdx = idx
                 }
                 this.$router.push('/testPage2')
-            } else {
+            }
+            else {
                 this.isModalVisible = true;
             }
         }

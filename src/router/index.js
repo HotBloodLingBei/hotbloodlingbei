@@ -3,7 +3,6 @@ import startTestPage from '../views/startTestPage.vue'
 import mbtiInstruction from '../views/mbtiInstructionPage.vue'
 import test1 from '../views/testPage1.vue'
 import test2 from '../views/testPage2.vue'
-import kindsOfMbti from '../views/kindsOfMbtiPage.vue'
 import result from '../views/resultPage.vue'
 
 
@@ -26,10 +25,6 @@ const routes = [
         path: '/testPage2',
         name: 'test2',
         component: test2
-    },    {
-        path: '/kindsOfMbtiPage',
-        name: 'kindsOfMbti',
-        component: kindsOfMbti
     },{
         path: '/resultPage',
         name: 'result',

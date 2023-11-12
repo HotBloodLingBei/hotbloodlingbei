@@ -1,6 +1,5 @@
 <script>
 import mymbtiDescription from "@/data/mbtiDescription";
-// import mbtiDescription from "../data/mbtiDescription";
 
 export default {
     name: "cardComponent",

@@ -1,7 +1,3 @@
-<script setup>
-
-</script>
-
 <template>
     <div class = "test-tips">
       <h1 class = "test-tips-title">测试提示</h1>

@@ -1,13 +1,12 @@
 <script>
-// import clipboard from 'clipboard';
-
+import store from '@/store/store';
 export default {
   name: "share-button",
     methods:{
     //   将内容粘贴至剪切板
         async copyToClipboard() {
             try {
-                await navigator.clipboard.writeText("你好");
+                await navigator.clipboard.writeText("我测出的人格是：" + store.mbtiType + "人格,你也来试试吧！\n点击下方链接来进行查看吧！\n https://61.139.65.140:17499/");
                 alert('本站链接已经复制至你的剪切板了哦！');
             } catch (error) {
                 alert('复制失败：请联系本站管理员' + error.message);

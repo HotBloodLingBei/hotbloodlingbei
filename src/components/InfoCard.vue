@@ -80,8 +80,8 @@ a {
 }
 
 .modal-container {
-  max-height: 600px;
-  max-width: 500px;
+  max-height: 700px;
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
   background-color: #fff;

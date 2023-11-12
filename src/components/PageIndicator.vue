@@ -41,14 +41,10 @@ export default {
   components: {
     MyModal
   },
-  computed: {
-    currentPage() {
-      return store.mbtiType;
-    },
-  },
   data() {
     return {
       isModalVisible: false, // 控制弹窗是否显示
+      currentPage: this.$route.path
     };
   },
 
@@ -87,7 +83,7 @@ export default {
     background-color: #eee;
     display: flex;
     justify-content: space-around;
-    padding: 2px;
+    padding: 5px;
     border-bottom: 1px solid #ccc;
     z-index: 100;
 }

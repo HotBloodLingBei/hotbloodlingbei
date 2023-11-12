@@ -69,6 +69,7 @@ export default {
 
 .mbtiDescription {
     white-space: pre-line;
+  text-align: left;
 }
 
 .contentContainer {

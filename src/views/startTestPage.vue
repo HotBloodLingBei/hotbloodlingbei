@@ -24,8 +24,8 @@ export default {
     top: 0; /* 将轮播图置顶 */
 }
 .contentBox{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>

@@ -178,9 +178,9 @@ justify-content: flex-start;：将容器内部元素左对齐。
 */
 .imgBox {
     position: absolute;
-    top: 0px;
-    left: 0px;
-    min-width: 600px;
+    top: 0;
+    left: 0;
+    width: 600px;
     height: 250px;
     display: flex;
     justify-content: flex-start;
@@ -249,8 +249,8 @@ justify-content: flex-start;：将容器内部元素左对齐。
 
 #app {
     width: 100%;
-    margin-top: 50px;
-    padding: 0px;
+    margin-top: 80px;
+    padding: 20px;
     display: flex;
     justify-content: center;
 }

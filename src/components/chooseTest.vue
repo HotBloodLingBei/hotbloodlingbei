@@ -15,7 +15,7 @@
             <div class="check-box">
                 <img
                         :src="image1Src"
-                        :style="{ filter: image1Filtered ? 'none' : 'grayscale(100%)' }"
+                        :style="{ filter: image1Filtered ? 'none' : 'blur(5px)' }"
                         class="responsive-image"
                         @click="toggleImage1Filter"
                 />
@@ -26,7 +26,7 @@
             <div class="check-box">
                 <img
                         :src="image2Src"
-                        :style="{ filter: image2Filtered ? 'none' : 'grayscale(100%)' }"
+                        :style="{ filter: image2Filtered ? 'none' : 'blur(5px)' }"
                         class="responsive-image"
                         @click="toggleImage2Filter"
                 />
@@ -58,7 +58,7 @@
 }
 
 .imgContainer {
-    padding: 0px;
+    padding: 0;
     margin-bottom: 10px;
     display: flex;
     width: 100%;

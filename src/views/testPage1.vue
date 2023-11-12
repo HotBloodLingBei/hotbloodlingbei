@@ -95,12 +95,7 @@ export default {
 
 <template>
     <div style="padding: 5%">
-        <div style="
-      padding: 5%;
-      border-radius: 50px;
-      background: #ffffff;
-      box-shadow:  20px 20px 60px #bebebe,
-      -20px -20px 60px #ffffff;">
+        <div class="questionContainer">
             <div style="  height: 200px;  display: flex; justify-content: center;align-items: center;">
                 {{ questionsConciseVersion.questionList[this.currentQuestionIndex].description }}
             </div>
@@ -208,6 +203,17 @@ export default {
 </template>
 
 <style scoped>
+.questionContainer{
+  padding: 5%;
+  border-radius: 50px;
+  background: #ffffff;
+  box-shadow:  20px 20px 60px #bebebe,
+  -20px -20px 60px #ffffff;
+  transition: 0.2s ease-in-out;
+}
+.questionContainer:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
 .left-aligned-button {
     background-color: #00a982;
     border-color: transparent;

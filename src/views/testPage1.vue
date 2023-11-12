@@ -2,6 +2,7 @@
 import TestTips from "@/components/TestTips.vue"
 import store from '@/store/store.js'
 import questionsConciseVersion from '@/data/questionsConciseVersion.js'
+import MyModal from "@/components/MyModal.vue";
 
 export default {
     name: "testPage1",
@@ -10,10 +11,12 @@ export default {
             questionsConciseVersion,
             store,
             currentQuestionIndex: store.initialIdx,
+            isModalVisible: false,
         };
     },
     components: {
         TestTips,
+        MyModal,
     },
     methods: {
         nextQuestion() {
@@ -40,7 +43,51 @@ export default {
             localStorage.setItem("Scores", JSON.stringify(store.Scores))
         },
         handleSubmit() {
-
+          let EIvalue=0,NSvalue=0,FTvalue=0,JPvalue=0
+          for (let eachAnswer of store.Scores) {
+            if(eachAnswer.valid===0){
+              this.isModalVisible=true
+              break
+            }else if(eachAnswer.dimension==="E/I"){
+              EIvalue+=eachAnswer.value
+            }else if(eachAnswer.dimension==="N/S"){
+              NSvalue+=eachAnswer.value
+            }else if(eachAnswer.dimension==="F/T"){
+              FTvalue+=eachAnswer.value
+            }else if(eachAnswer.dimension==="J/P"){
+              JPvalue+=eachAnswer.value
+            }
+          }
+          let type=""
+          if(this.isModalVisible===false){
+            if(EIvalue>0){
+              type+='e'
+            }else{
+              type+='i'
+            }
+            if(NSvalue>0){
+              type+='n'
+            }else{
+              type+='s'
+            }
+            if(FTvalue>0){
+              type+='f'
+            }else{
+              type+='t'
+            }
+            if(JPvalue>0){
+              type+='j'
+            }else{
+              type+='p'
+            }
+            store.mbtiType=type
+            this.$router.push('/resultPage')
+            store.testType=""
+            store.Scores=[]
+            store.initialIdx=0
+            localStorage.removeItem("testType")
+            localStorage.removeItem("Scores")
+          }
         }
     }
 }
@@ -154,6 +201,10 @@ export default {
 
     </div>
     <TestTips v-if="currentQuestionIndex<questionsConciseVersion.questionList.length/2"/>
+    <MyModal
+        v-if="isModalVisible"
+        content="请完成全部的测试题目"
+    />
 </template>
 
 <style scoped>

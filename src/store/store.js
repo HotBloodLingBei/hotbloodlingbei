@@ -7,6 +7,5 @@ export default reactive({
             initialIdx: 0,
             mbtiType: "entj",//最终的mbti人格类型，小写
             selectedmbtiType: "entj",
-
     }
 )

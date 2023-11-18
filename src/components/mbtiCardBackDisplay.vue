@@ -53,20 +53,23 @@ export default {
 </script>
 
 <style scoped>
+@import "../common/font.css";
 .title {
-  font-size: 1.5em;
-  font-weight: 900;
-  text-align: center;
-  margin: 0;
+    font-family: Microsoft YaHei, sans-serif;
+    font-size: 1.5em;
+    font-weight: 900;
+    text-align: center;
+    margin: 0;
 }
 
 
 .text {
-  font-size: 0.9em;
-  font-weight: 400;
-  text-align: left;
-  margin: 15px;
-  font-family: Microsoft YaHei, sans-serif;
+    font-family: LongZhuTi-Regular, serif;
+    font-size: 0.9em;
+    font-weight: 400;
+    text-align: left;
+    margin: 15px;
+
 }
 
 </style>

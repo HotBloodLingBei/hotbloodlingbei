@@ -40,11 +40,14 @@ export default {
 
 <style scoped>
 .title {
-    font-size: 15px;
+    font-family: JinNianYeYaoJiaYouYa, serif;
+    font-size: 2.0em;
 }
 
 .content {
-    font-size: 13px;
+    margin-top: 10%;
+    font-family: LongZhuTi-Regular, serif;
+    font-size: 0.6em;
 }
 
 .card {

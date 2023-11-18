@@ -74,6 +74,8 @@ export default {
 </script>
 
 <style scoped>
+@import '../common/font.css';
+
 .fixable {
     position: fixed;
     top: 0;
@@ -83,6 +85,7 @@ export default {
 }
 
 .page-indicator {
+    font-family: LongZhuTi-Regular, serif;
     top: 0;
     left: 0;
     width: 100%;

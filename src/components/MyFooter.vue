@@ -25,6 +25,7 @@
 
 <style scoped>
 .footer {
+    font-family: PingFangSC-Regular, serif;
     background-color: rgba(109, 109, 109, 0.445);
     color: #fff;
     padding: 15px 0;
@@ -33,7 +34,7 @@
     position: relative;
     font-size: 12px;
     z-index: 0;
-  text-align: left;
+    text-align: left;
 }
 
 .footer-content {

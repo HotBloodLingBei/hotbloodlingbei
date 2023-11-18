@@ -53,6 +53,8 @@
 </template>
 
 <style scoped>
+@import "../common/font.css";
+
 
 .boxContainer {
     padding: 10px;
@@ -60,6 +62,7 @@
 }
 
 .imgContainer {
+    font-family: LongZhuTi-Regular, serif;
     padding: 0;
     margin-bottom: 10px;
     display: flex;

@@ -1,13 +1,34 @@
 @font-face {
-    font-family: '王汉宗中行书繁';
-    src: url('王汉宗中行书繁.ttf');
+    font-family: '杨任东竹石体';
+    src: url('杨任东竹石体.ttf');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: '杨任东竹石体';
-    src: url('杨任东竹石体.ttf');
+    font-family: '站酷仓耳渔阳体';
+    src: url('站酷仓耳渔阳体.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'JinNianYeYaoJiaYouYa';
+    src: url('JinNianYeYaoJiaYouYa.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'LongZhuTi-Regular';
+    src: url('LongZhuTi-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'P-2';
+    src: url('P-2.ttf');
     font-weight: normal;
     font-style: normal;
 }

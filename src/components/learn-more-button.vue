@@ -19,6 +19,7 @@
 
 <style scoped>
 button {
+    font-family: 方正书宋, serif;
     background: transparent;
     position: relative;
     padding: 5px 15px;

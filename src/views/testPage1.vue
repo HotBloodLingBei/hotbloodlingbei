@@ -19,11 +19,16 @@ export default {
         MyModal,
     },
     beforeCreate() {
-        store.testType = "conciseVersion"
-        //         用于区分初始值0和赋值0，判断答案是否有效
-        store.Scores = []
-        for (let eachQuestion of questionsConciseVersion.questionList) {
-            store.Scores.push({dimension: eachQuestion.dimension, value: 0, valid: 0})
+        console.log('函数已执行1');
+        console.log(store.Scores)
+        if (store.Scores.length === 0) {
+            console.log('函数已执行2');
+            store.testType = "conciseVersion"
+            //         用于区分初始值0和赋值0，判断答案是否有效
+            store.Scores = []
+            for (let eachQuestion of questionsConciseVersion.questionList) {
+                store.Scores.push({dimension: eachQuestion.dimension, value: 0, valid: 0})
+            }
         }
     },
     methods: {
@@ -125,10 +130,11 @@ export default {
         <div class="questionContainer">
             <!--          左上角题号-->
           <div class="card-number">{{this.currentQuestionIndex+1}}</div>
-            <div style="  height: 200px;  display: flex; justify-content: center;align-items: center;">
+            <div style="font-family: 站酷仓耳渔阳体,serif;font-size: 1.6em;  height: 200px;  display: flex; justify-content: center;align-items: center;">
                 {{ questionsConciseVersion.questionList[this.currentQuestionIndex].description }}
             </div>
-            <div style=" margin-right: 5%; margin-left: 5%; display: flex; justify-content: space-between;">
+            <div class="options"
+                 style=" margin-right: 5%; margin-left: 5%; display: flex; justify-content: space-between;">
                 <button
                         :style="{width:'100px' , height: '45px', background: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[0].score ? '#bebebe':'#ffffff'}"
                         @click="fetchChoice(0)" class="button">{{ questionsConciseVersion.optionScore[0].text }}
@@ -160,7 +166,7 @@ export default {
             </div>
         </div>
         <!--按钮容器-->
-        <div style=" align-items: center;justify-content: space-between;display: flex;">
+        <div class="button-container" style=" align-items: center;justify-content: space-between;display: flex;">
             <!--上一题的按钮-->
             <div style="height: 60px; width:60px">
                 <button class="button1" @click="lastQuestion" v-if="currentQuestionIndex > 0">
@@ -187,7 +193,8 @@ export default {
                 </button>
             </div>
             <!--下一题的按钮-->
-            <div style="height: 60px; width: 140px; display: flex;align-items: center;">
+
+            <div style="height: 60px; width: 140px; display: flex;align-items: center;font-family: LongZhuTi-Regular,serif;">
                 <button class="cssbuttons-io-button" @click="nextQuestion"
                         v-if="currentQuestionIndex < questionsConciseVersion.questionList.length-1">
                     下一题
@@ -208,7 +215,7 @@ export default {
                 </button>
             </div>
             <!--提交按钮-->
-            <div style="height: 60px; width: 100px; display: flex;align-items: center;">
+            <div style="font-family: LongZhuTi-Regular,serif;height: 60px; width: 100px; display: flex;align-items: center;">
                 <button class="shadow__btn" @click="handleSubmit"
                         v-if="currentQuestionIndex === questionsConciseVersion.questionList.length-1">提交
                 </button>
@@ -233,17 +240,28 @@ export default {
 </template>
 
 <style scoped>
-.card-number{
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  top: 30px;
-  left: 40px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #ffffff, #e6e6e6);
-  box-shadow:  20px 20px 60px #d9d9d9,
-  -20px -20px 60px #ffffff;
-  display: flex; justify-content: center;align-items: center;
+@import "../common/font.css";
+
+.options {
+    font-family: LongZhuTi-Regular, serif;
+}
+
+
+.card-number {
+    font-family: P-2, serif;
+    font-size: 1.5em;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 30px;
+    left: 40px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    box-shadow: 20px 20px 60px #d9d9d9,
+    -20px -20px 60px #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .questionContainer{
   padding: 5%;
@@ -350,6 +368,7 @@ export default {
 }
 
 .text {
+    font-family: 站酷仓耳渔阳体, serif;
     height: 100%;
     width: 60px;
     display: flex;

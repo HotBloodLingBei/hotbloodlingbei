@@ -62,12 +62,8 @@ export default {
 </template>
 
 <style scoped>
-@font-face {
-    font-family: '杨任东竹石体';
-    src: url('../common/杨任东竹石体.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+@import '../common/font.css';
+
 
 .title {
     font-size: 30px;
@@ -79,8 +75,9 @@ export default {
 }
 
 .mbtiDescription {
+    font-family: 站酷仓耳渔阳体, serif;
     white-space: pre-line;
-  text-align: left;
+    text-align: left;
 }
 
 .contentContainer {
@@ -123,7 +120,7 @@ export default {
 
 
 .title {
-    font-family: Microsoft YaHei, sans-serif;
+    font-family: 杨任东竹石体, Microsoft YaHei, sans-serif;
     width: 60%;
     text-align: center;
     display: flex;

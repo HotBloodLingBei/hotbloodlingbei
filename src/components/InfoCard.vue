@@ -205,7 +205,7 @@ a {
 }
 
 .text {
-  text-align: left;
-  font-family: Microsoft YaHei, sans-serif;
+    font-family: LongZhuTi-Regular, serif;
+    text-align: left;
 }
 </style>

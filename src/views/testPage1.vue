@@ -18,21 +18,33 @@ export default {
         TestTips,
         MyModal,
     },
+    beforeCreate() {
+        store.testType = "conciseVersion"
+        //         用于区分初始值0和赋值0，判断答案是否有效
+        store.Scores = []
+        for (let eachQuestion of questionsConciseVersion.questionList) {
+            store.Scores.push({dimension: eachQuestion.dimension, value: 0, valid: 0})
+        }
+    },
     methods: {
-      closeModal() {
-        this.isModalVisible = false;
-      },
+        //   关闭弹窗
+        closeModal() {
+            this.isModalVisible = false;
+        },
+        // 下一题
         nextQuestion() {
             // 更新 currentQuestionIndex 的值
             if (this.currentQuestionIndex < questionsConciseVersion.questionList.length - 1) {
                 this.currentQuestionIndex += 1;
             }
         },
+        // 上一题的逻辑
         lastQuestion() {
             if (this.currentQuestionIndex > 0) {
                 this.currentQuestionIndex -= 1;
             }
         },
+        // 点击选项后实现下一题，并且记录题目的分数
         fetchChoice(choiceNum) {
             console.log(store.Scores)
             store.Scores[this.currentQuestionIndex].value = questionsConciseVersion.optionScore[choiceNum].score
@@ -41,12 +53,14 @@ export default {
                 this.currentQuestionIndex += 1;
             }
         },
+        // 保存进度
         saveProgress() {
             localStorage.removeItem("testType1")
             localStorage.removeItem("Scores1")
             localStorage.setItem("testType1", JSON.stringify(store.testType))
             localStorage.setItem("Scores1", JSON.stringify(store.Scores))
         },
+        // 处理提交
         handleSubmit() {
           this.isModalVisible=false
           let EIvalue=0,NSvalue=0,FTvalue=0,JPvalue=0
@@ -107,8 +121,9 @@ export default {
 
 <template>
     <div style="padding: 5%">
+        <!--          题目容器-->
         <div class="questionContainer">
-<!--          题目容器-->
+            <!--          左上角题号-->
           <div class="card-number">{{this.currentQuestionIndex+1}}</div>
             <div style="  height: 200px;  display: flex; justify-content: center;align-items: center;">
                 {{ questionsConciseVersion.questionList[this.currentQuestionIndex].description }}

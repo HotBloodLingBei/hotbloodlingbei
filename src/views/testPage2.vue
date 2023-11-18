@@ -5,26 +5,33 @@ import questionsAccurateVersion from '@/data/questionsAccurateVersion.js'
 import MyModal from "@/components/MyModal.vue";
 
 export default {
-  name: "testPage2",
-  data() {
-    return {
-      questionsAccurateVersion,
-      store,
-      currentQuestionIndex: store.initialIdx,
-      isModalVisible: false,
-    };
-  },
-  components: {
-    TestTips,
-    MyModal,
-  },
-  methods: {
-    closeModal() {
-      this.isModalVisible = false;
+    name: "testPage2",
+    data() {
+        return {
+            questionsAccurateVersion,
+            store,
+            currentQuestionIndex: store.initialIdx,
+            isModalVisible: false,
+        };
     },
-    nextQuestion() {
-      // 更新 currentQuestionIndex 的值
-      if (this.currentQuestionIndex < questionsAccurateVersion.questionList.length - 1) {
+    beforeCreate() {
+        store.testType = "accurateVersion"
+        store.Scores = []
+        for (let eachQuestion of questionsAccurateVersion.questionList) {
+            store.Scores.push({dimension: eachQuestion.dimension, value: 0, valid: 0})
+        }
+    },
+    components: {
+        TestTips,
+        MyModal,
+    },
+    methods: {
+        closeModal() {
+            this.isModalVisible = false;
+        },
+        nextQuestion() {
+            // 更新 currentQuestionIndex 的值
+            if (this.currentQuestionIndex < questionsAccurateVersion.questionList.length - 1) {
         this.currentQuestionIndex += 1;
       }
     },

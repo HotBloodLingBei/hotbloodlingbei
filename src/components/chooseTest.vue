@@ -189,16 +189,16 @@ export default {
             this.image2Filtered = true;
         },
 // 取变量testType和Scores至Store
-// 处理跳转
+// 处理跳转，这里应该改成只改状态
       handleJump() {
-            // 初始化变量
+          // 初始化变量，从localStorage中取出变量
             let StrTestType1 = localStorage.getItem("testType1")
             let StrTestType2 = localStorage.getItem("testType2")
             let StrScores1 = localStorage.getItem("Scores1")
             let StrScores2 = localStorage.getItem("Scores2")
             let localStorageExistStatus1 = false;
             let localStorageExistStatus2 = false;
-            // localStorage存在则将结果
+          // 解析localStorage中既有题目的保存状态
             if (StrTestType1 && StrScores1) {
                 var testType1 = JSON.parse(StrTestType1);
                 var Scores1 = JSON.parse(StrScores1);
@@ -223,6 +223,7 @@ export default {
                     for (let eachQuestion of questionsConciseVersion.questionList) {
                         store.Scores.push({dimension: eachQuestion.dimension, value: 0, valid: 0})
                     }
+                    store.testType = testType1
                     // console.log(store.Scores)
                 }
                 // 记录最前面一个未做完的题目的位置
@@ -261,6 +262,7 @@ export default {
                 }
                 this.$router.push('/testPage2')
             }
+            // 如果都没有选则将弹出提示框
             else {
                 this.isModalVisible = true;
             }

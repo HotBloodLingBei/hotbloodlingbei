@@ -3,6 +3,7 @@ import TestTips from "@/components/TestTips.vue"
 import store from '@/store/store.js'
 import questionsAccurateVersion from '@/data/questionsAccurateVersion.js'
 import MyModal from "@/components/MyModal.vue";
+import questionTable from "@/components/questionTable.vue";
 
 export default {
     name: "testPage2",
@@ -26,76 +27,80 @@ export default {
     components: {
         TestTips,
         MyModal,
+        questionTable
     },
     methods: {
+        jumpToQuestion(index){
+            this.currentQuestionIndex=index
+        },
         closeModal() {
             this.isModalVisible = false;
         },
         nextQuestion() {
             // 更新 currentQuestionIndex 的值
             if (this.currentQuestionIndex < questionsAccurateVersion.questionList.length - 1) {
-                this.currentQuestionIndex += 1;
-            }
-        },
-        lastQuestion() {
-            if (this.currentQuestionIndex > 0) {
-                this.currentQuestionIndex -= 1;
-            }
-        },
-        fetchChoice(choiceNum) {
-            console.log(store.Scores)
-            store.Scores[this.currentQuestionIndex].value = questionsAccurateVersion.optionScore[choiceNum].score
-            store.Scores[this.currentQuestionIndex].valid = 1
-            if (this.currentQuestionIndex < questionsAccurateVersion.questionList.length - 1) {
-                this.currentQuestionIndex += 1;
-            }
-        },
-        saveProgress() {
-            localStorage.removeItem("testType2")
-            localStorage.removeItem("Scores2")
-            localStorage.setItem("testType2", JSON.stringify(store.testType))
-            localStorage.setItem("Scores2", JSON.stringify(store.Scores))
-        },
+        this.currentQuestionIndex += 1;
+      }
+    },
+    lastQuestion() {
+      if (this.currentQuestionIndex > 0) {
+        this.currentQuestionIndex -= 1;
+      }
+    },
+    fetchChoice(choiceNum) {
+      console.log(store.Scores)
+      store.Scores[this.currentQuestionIndex].value = questionsAccurateVersion.optionScore[choiceNum].score
+      store.Scores[this.currentQuestionIndex].valid = 1
+      if (this.currentQuestionIndex < questionsAccurateVersion.questionList.length - 1) {
+        this.currentQuestionIndex += 1;
+      }
+    },
+    saveProgress() {
+      localStorage.removeItem("testType2")
+      localStorage.removeItem("Scores2")
+      localStorage.setItem("testType2", JSON.stringify(store.testType))
+      localStorage.setItem("Scores2", JSON.stringify(store.Scores))
+    },
         handleSubmit() {
-            this.isModalVisible = false
-            let EIvalue = 0, NSvalue = 0, FTvalue = 0, JPvalue = 0
+            this.isModalVisible=false
+            let EIvalue=0,NSvalue=0,FTvalue=0,JPvalue=0
             for (let eachAnswer of store.Scores) {
-                if (eachAnswer.valid === 0) {
-                    this.isModalVisible = true
+                if(eachAnswer.valid===0){
+                    this.isModalVisible=true
                     break
-                } else if (eachAnswer.dimension === "E/I") {
-                    EIvalue += eachAnswer.value
-                } else if (eachAnswer.dimension === "N/S") {
-                    NSvalue += eachAnswer.value
-                } else if (eachAnswer.dimension === "F/T") {
-                    FTvalue += eachAnswer.value
-                } else if (eachAnswer.dimension === "J/P") {
-                    JPvalue += eachAnswer.value
+                }else if(eachAnswer.dimension==="E/I"){
+                    EIvalue+=eachAnswer.value
+                }else if(eachAnswer.dimension==="N/S"){
+                    NSvalue+=eachAnswer.value
+                }else if(eachAnswer.dimension==="F/T"){
+                    FTvalue+=eachAnswer.value
+                }else if(eachAnswer.dimension==="J/P"){
+                    JPvalue+=eachAnswer.value
                 }
             }
-            let type = ""
-            if (this.isModalVisible === false) {
-                if (EIvalue > 0) {
-                    type += 'e'
-                } else {
-                    type += 'i'
+            let type=""
+            if(this.isModalVisible===false){
+                if(EIvalue>0){
+                    type+='e'
+                }else{
+                    type+='i'
                 }
-                if (NSvalue > 0) {
-                    type += 'n'
-                } else {
-                    type += 's'
+                if(NSvalue>0){
+                    type+='n'
+                }else{
+                    type+='s'
                 }
-                if (FTvalue > 0) {
-                    type += 'f'
-                } else {
-                    type += 't'
+                if(FTvalue>0){
+                    type+='f'
+                }else{
+                    type+='t'
                 }
-                if (JPvalue > 0) {
-                    type += 'j'
-                } else {
-                    type += 'p'
+                if(JPvalue>0){
+                    type+='j'
+                }else{
+                    type+='p'
                 }
-                store.mbtiType = type
+                store.mbtiType=type
                 console.log(store)
                 this.$router.push('/resultPage')
                 // store.testType=""
@@ -212,13 +217,14 @@ export default {
         </div>
 
 
-    </div>
-    <TestTips v-if="currentQuestionIndex<questionsAccurateVersion.questionList.length/2"/>
-    <MyModal
-            v-if="isModalVisible"
-            content="请完成全部的测试题目"
-            @close="closeModal"
-    />
+  </div>
+  <TestTips v-if="currentQuestionIndex<questionsAccurateVersion.questionList.length/2"/>
+  <MyModal
+      v-if="isModalVisible"
+      content="请完成全部的测试题目"
+      @close="closeModal"
+  />
+  <questionTable @jumpToQuestion="jumpToQuestion"/>
 </template>
 
 <style scoped>
@@ -253,7 +259,6 @@ export default {
     background: linear-gradient(90deg, #FEE2F8, #DCF8EF);
     position: relative;
 }
-
 .questionContainer:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }

@@ -3,6 +3,7 @@ import TestTips from "@/components/TestTips.vue"
 import store from '@/store/store.js'
 import questionsConciseVersion from '@/data/questionsConciseVersion.js'
 import MyModal from "@/components/MyModal.vue";
+import questionTable from "@/components/questionTable.vue";
 
 export default {
     name: "testPage1",
@@ -17,6 +18,7 @@ export default {
     components: {
         TestTips,
         MyModal,
+      questionTable
     },
     beforeCreate() {
         console.log('函数已执行1');
@@ -32,11 +34,14 @@ export default {
         }
     },
     methods: {
-        //   关闭弹窗
-        closeModal() {
-            this.isModalVisible = false;
-        },
-        // 下一题
+      jumpToQuestion(index){
+        this.currentQuestionIndex=index
+      },
+      //   关闭弹窗
+      closeModal() {
+        this.isModalVisible = false;
+      },
+      // 下一题
         nextQuestion() {
             // 更新 currentQuestionIndex 的值
             if (this.currentQuestionIndex < questionsConciseVersion.questionList.length - 1) {
@@ -126,9 +131,9 @@ export default {
 
 <template>
     <div style="padding: 5%">
-        <!--          题目容器-->
+      <!--          题目容器-->
         <div class="questionContainer">
-            <!--          左上角题号-->
+          <!--          左上角题号-->
           <div class="card-number">{{this.currentQuestionIndex+1}}</div>
             <div style="font-family: 站酷仓耳渔阳体,serif;font-size: 1.6em;  height: 200px;  display: flex; justify-content: center;align-items: center;">
                 {{ questionsConciseVersion.questionList[this.currentQuestionIndex].description }}
@@ -237,6 +242,7 @@ export default {
         content="请完成全部的测试题目"
         @close="closeModal"
     />
+  <questionTable @jumpToQuestion="jumpToQuestion"/>
 </template>
 
 <style scoped>

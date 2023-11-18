@@ -76,23 +76,26 @@ export default {
             }else{
               type+='s'
             }
-            if(FTvalue>0){
-              type+='f'
-            }else{
-              type+='t'
-            }
-            if(JPvalue>0){
-              type+='j'
-            }else{
-              type+='p'
-            }
-            store.mbtiType=type
-            this.$router.push('/resultPage')
-            // store.testType=""
-            // store.Scores=[]
-            // store.initialIdx=0
-            localStorage.removeItem("testType1")
-            localStorage.removeItem("Scores1")
+              if (FTvalue > 0) {
+                  type += 'f'
+              } else {
+                  type += 't'
+              }
+              if (JPvalue > 0) {
+                  type += 'j'
+              } else {
+                  type += 'p'
+              }
+              //   将mbti的结果放到localStorage里以便后面进行数据的恢复
+              localStorage.setItem("mbtiType", type)
+              //   将mbti的结果写到store里面去
+              store.mbtiType = type
+              this.$router.push('/resultPage')
+              // store.testType=""
+              // store.Scores=[]
+              // store.initialIdx=0
+              localStorage.removeItem("testType1")
+              localStorage.removeItem("Scores1")
           }
         },
       debug(){

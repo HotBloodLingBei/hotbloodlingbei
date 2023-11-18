@@ -19,6 +19,17 @@ export default {
             mbtiPicture: require('@/assets/' + store.mbtiType + '.svg')
         }
     },
+    // 需要做的就是在结果产生的那一刻将值放到localstorage里面去，然后一进入到这个页面就将值拿出来，放到store里面去，再去刷新页面就可以看到
+    beforeCreate() {
+        console.log('函数已执行');
+        let mbtiType = localStorage.getItem("mbtiType");
+        // mbtiType存在的情况
+        if (mbtiType) {
+            console.log('函数已执行2');
+            //   直接覆盖掉mbtiType
+            store.mbtiType = mbtiType;
+        }
+    },
     components: {
         screenshotButton,
         learnMoreButton,

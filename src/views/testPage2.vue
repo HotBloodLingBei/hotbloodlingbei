@@ -3,35 +3,40 @@ import TestTips from "@/components/TestTips.vue"
 import store from '@/store/store.js'
 import questionsAccurateVersion from '@/data/questionsAccurateVersion.js'
 import MyModal from "@/components/MyModal.vue";
+import questionTable from "@/components/questionTable.vue";
 
 export default {
-    name: "testPage2",
-    data() {
-        return {
-            questionsAccurateVersion,
-            store,
-            currentQuestionIndex: store.initialIdx,
-            isModalVisible: false,
-        };
+  name: "testPage2",
+  data() {
+    return {
+      questionsAccurateVersion,
+      store,
+      currentQuestionIndex: store.initialIdx,
+      isModalVisible: false,
+    };
+  },
+  components: {
+    TestTips,
+    MyModal,
+    questionTable
+  },
+  beforeCreate() {
+    store.testType = "accurateVersion"
+    store.Scores = []
+    for (let eachQuestion of questionsAccurateVersion.questionList) {
+      store.Scores.push({dimension: eachQuestion.dimension, value: 0, valid: 0})
+    }
+  },
+  methods: {
+    jumpToQuestion(index){
+      this.currentQuestionIndex=index
     },
-    beforeCreate() {
-        store.testType = "accurateVersion"
-        store.Scores = []
-        for (let eachQuestion of questionsAccurateVersion.questionList) {
-            store.Scores.push({dimension: eachQuestion.dimension, value: 0, valid: 0})
-        }
+    closeModal() {
+      this.isModalVisible = false;
     },
-    components: {
-        TestTips,
-        MyModal,
-    },
-    methods: {
-        closeModal() {
-            this.isModalVisible = false;
-        },
-        nextQuestion() {
-            // 更新 currentQuestionIndex 的值
-            if (this.currentQuestionIndex < questionsAccurateVersion.questionList.length - 1) {
+    nextQuestion() {
+      // 更新 currentQuestionIndex 的值
+      if (this.currentQuestionIndex < questionsAccurateVersion.questionList.length - 1) {
         this.currentQuestionIndex += 1;
       }
     },
@@ -216,6 +221,7 @@ export default {
       content="请完成全部的测试题目"
       @close="closeModal"
   />
+  <questionTable @jumpToQuestion="jumpToQuestion"/>
 </template>
 
 <style scoped>

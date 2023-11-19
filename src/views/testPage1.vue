@@ -242,7 +242,7 @@ export default {
         content="请完成全部的测试题目"
         @close="closeModal"
     />
-  <questionTable @jumpToQuestion="jumpToQuestion"/>
+  <questionTable class="questionTable" @jumpToQuestion="jumpToQuestion"/>
 </template>
 
 <style scoped>
@@ -252,6 +252,9 @@ export default {
     font-family: LongZhuTi-Regular, serif;
 }
 
+.questionTable {
+    margin-top: 10px;
+}
 
 .card-number {
     font-family: P-2, serif;

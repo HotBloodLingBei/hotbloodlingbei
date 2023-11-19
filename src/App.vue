@@ -109,6 +109,8 @@ export default {
             });
         });
     },
+
+
     created() {
         if (window.screen.height === 864) {
             window.onload = window.onresize = function () {
@@ -116,7 +118,11 @@ export default {
             }
         } else {
             window.onload = window.onresize = function () {
-                document.body.style.zoom = window.screen.height / 750;// document.body.style.zoom = 1.2;
+                if (window.screen.height === 1440) {
+                    document.body.style.zoom = 1.8
+                } else {
+                    document.body.style.zoom = window.screen.height / 864;
+                }
             }
         }
     }

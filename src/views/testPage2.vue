@@ -13,6 +13,7 @@ export default {
             store,
             currentQuestionIndex: store.initialIdx,
             isModalVisible: false,
+            isQuestionTableVisible:false,
         };
     },
     beforeCreate() {
@@ -30,6 +31,9 @@ export default {
         questionTable
     },
     methods: {
+        changeTableVisible(){
+          this.isQuestionTableVisible=!this.isQuestionTableVisible
+        },
         jumpToQuestion(index){
             this.currentQuestionIndex=index
         },
@@ -118,13 +122,13 @@ export default {
     <div style="padding: 5%">
         <div class="questionContainer">
             <div class="card-number">{{ this.currentQuestionIndex + 1 }}</div>
-            <div style="font-family: 站酷仓耳渔阳体,serif;font-size: 1.6em;  height:  160px;  display: flex; justify-content: center;align-items: center;">
+            <div style="font-family: 站酷仓耳渔阳体,serif;font-size: 1.6em;  height:  170px;  display: flex; justify-content: center;align-items: center;">
                 {{ questionsAccurateVersion.questionList[this.currentQuestionIndex].description }}
             </div>
             <div class=options
                  style=" margin-right: 5%; margin-left: 5%; display: flex; justify-content: space-between;flex-wrap: wrap;">
                 <button
-                        :style="{width:'100px' , height: '45px', background: store.Scores[currentQuestionIndex].value===questionsAccurateVersion.optionScore[0].score ? '#bebebe':'#ffffff'}"
+                        :style="{ width:'100px' , height: '45px', background: store.Scores[currentQuestionIndex].value===questionsAccurateVersion.optionScore[0].score ? '#bebebe':'#ffffff'}"
                         @click="fetchChoice(0)" class="button">{{ questionsAccurateVersion.optionScore[0].text }}
                 </button>
                 <button
@@ -180,8 +184,9 @@ export default {
                     <p class="text">保存进度</p>
                 </button>
             </div>
+
             <!--下一题的按钮-->
-            <div style="height: 60px;  width: 400px; display: flex;align-items: center;">
+            <div style="height: 60px; width: 400px; display: flex;align-items: center;">
                 <button class="cssbuttons-io-button" @click="nextQuestion"
                         v-if="currentQuestionIndex < questionsAccurateVersion.questionList.length-1">
                     下一题
@@ -201,6 +206,7 @@ export default {
                     </div>
                 </button>
             </div>
+          <div class="bookmarkBtn" @click="changeTableVisible" style="color: white;">题表</div>
             <!--提交按钮-->
             <div style="height: 60px; width: 100px; display: flex;align-items: center;">
                 <button class="shadow__btn" @click="handleSubmit"
@@ -224,7 +230,8 @@ export default {
       content="请完成全部的测试题目"
       @close="closeModal"
   />
-  <questionTable @jumpToQuestion="jumpToQuestion"/>
+
+  <questionTable  v-if="isQuestionTableVisible" @jumpToQuestion="jumpToQuestion"/>
 </template>
 
 <style scoped>

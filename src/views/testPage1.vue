@@ -13,6 +13,7 @@ export default {
             store,
             currentQuestionIndex: store.initialIdx,
             isModalVisible: false,
+          isQuestionTableVisible:false,
         };
     },
     components: {
@@ -34,6 +35,9 @@ export default {
         }
     },
     methods: {
+      changeTableVisible(){
+        this.isQuestionTableVisible=!this.isQuestionTableVisible
+      },
       jumpToQuestion(index){
         this.currentQuestionIndex=index
       },
@@ -219,6 +223,7 @@ export default {
                     </div>
                 </button>
             </div>
+          <div class="bookmarkBtn" @click="changeTableVisible" style="color: white;">题表</div>
             <!--提交按钮-->
             <div style="font-family: LongZhuTi-Regular,serif;height: 60px; width: 100px; display: flex;align-items: center;">
                 <button class="shadow__btn" @click="handleSubmit"
@@ -242,7 +247,7 @@ export default {
         content="请完成全部的测试题目"
         @close="closeModal"
     />
-  <questionTable @jumpToQuestion="jumpToQuestion"/>
+  <questionTable v-if="isQuestionTableVisible" @jumpToQuestion="jumpToQuestion"/>
 </template>
 
 <style scoped>

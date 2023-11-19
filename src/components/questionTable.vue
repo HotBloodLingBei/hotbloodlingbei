@@ -1,5 +1,5 @@
 <template>
-    <div :class="ishidden===0 ? 'hidden' : 'show'">
+    <div :class="store.ishidden===0 ? 'hidden' : 'show'">
         <svg t="1700369599341" @click="open" class="launch-table" viewBox="0 0 1024 1024" version="1.1"
              xmlns="http://www.w3.org/2000/svg"
              p-id="1057" width="200" height="200">
@@ -8,7 +8,7 @@
                 p-id="1058" fill="#8a8a8a"></path>
         </svg>
     </div>
-    <div :class="ishidden===1 ? 'hidden' : 'show'">
+    <div :class="store.ishidden===1 ? 'hidden' : 'show'">
         <div class="outer-container">
             <!--      向右箭头和想做箭头来表示显示和隐藏-->
             <div>
@@ -45,7 +45,6 @@ export default {
         return {
             store,
             questionsPerRow: 10,// 每行显示的题号数量
-            ishidden: 0,
         }
     },
     methods: {
@@ -53,10 +52,10 @@ export default {
             this.$emit("jumpToQuestion", index)
         },
         close() {
-            this.ishidden = 1;
+            store.ishidden = 1;
         },
         open() {
-            this.ishidden = 0;
+            store.ishidden = 0;
         }
     },
     computed: {
@@ -86,7 +85,8 @@ export default {
 @import "../common/font.css";
 
 .launch-table {
-    position: absolute;
+    position: fixed;
+    cursor: pointer;
     width: 2em;
     height: 2em;
     right: 0px; /* 调整左侧距离 */

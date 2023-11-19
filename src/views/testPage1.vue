@@ -270,14 +270,16 @@ export default {
     align-items: center;
 }
 .questionContainer{
-  padding: 5%;
-  border-radius: 50px;
-  background: #ffffff;
-  box-shadow:  20px 20px 60px #bebebe,
-  -20px -20px 60px #ffffff;
-  transition: 0.2s ease-in-out;
-  background: linear-gradient(90deg, #FEE2F8, #DCF8EF );
-  position: relative;
+    margin-top: 4em;
+    height: 25em;
+    padding: 5%;
+    border-radius: 50px;
+    background: #ffffff;
+    box-shadow: 20px 20px 60px #bebebe,
+    -20px -20px 60px #ffffff;
+    transition: 0.2s ease-in-out;
+    background: linear-gradient(90deg, #FEE2F8, #DCF8EF);
+    position: relative;
 }
 .questionContainer:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);

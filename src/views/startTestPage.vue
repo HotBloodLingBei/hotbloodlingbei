@@ -3,9 +3,11 @@ import RotationChart from '../components/RotationChart.vue'
 import chooseTest from "@/components/chooseTest.vue";
 export default {
     name: "startTestPage",
-    components:{
-      RotationChart,
-      chooseTest,
+    components: {
+        RotationChart,
+        chooseTest,
+    },
+    beforeCreate() {
     }
 }
 

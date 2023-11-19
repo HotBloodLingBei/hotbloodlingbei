@@ -89,6 +89,8 @@
 }
 
 .responsive-button {
+    margin-top: 1em;
+    margin-bottom: 1.5em;
     width: 20%;
     height: 100%;
     object-fit: contain;

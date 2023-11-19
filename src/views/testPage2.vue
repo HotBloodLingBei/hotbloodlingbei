@@ -250,6 +250,8 @@ export default {
 }
 
 .questionContainer {
+    margin-top: 4em;
+    height: 25em;
     padding: 5%;
     border-radius: 50px;
     background: #ffffff;

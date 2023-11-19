@@ -135,11 +135,11 @@ export default {
         <div class="questionContainer">
           <!--          左上角题号-->
           <div class="card-number">{{this.currentQuestionIndex+1}}</div>
-            <div style="font-family: 站酷仓耳渔阳体,serif;font-size: 1.6em;  height: 200px;  display: flex; justify-content: center;align-items: center;">
+            <div style="font-family: 站酷仓耳渔阳体,serif;font-size: 1.6em;  height: 150px;  display: flex; justify-content: center;align-items: center;">
                 {{ questionsConciseVersion.questionList[this.currentQuestionIndex].description }}
             </div>
             <div class="options"
-                 style=" margin-right: 5%; margin-left: 5%; display: flex; justify-content: space-between;">
+                 style=" margin-right: 5%; margin-left: 5%; display: flex; justify-content: space-between;flex-wrap: wrap;">
                 <button
                         :style="{width:'100px' , height: '45px', background: store.Scores[currentQuestionIndex].value===questionsConciseVersion.optionScore[0].score ? '#bebebe':'#ffffff'}"
                         @click="fetchChoice(0)" class="button">{{ questionsConciseVersion.optionScore[0].text }}
@@ -199,7 +199,7 @@ export default {
             </div>
             <!--下一题的按钮-->
 
-            <div style="height: 60px; width: 140px; display: flex;align-items: center;font-family: LongZhuTi-Regular,serif;">
+            <div style="height: 60px; width: 400px; display: flex;align-items: center;font-family: LongZhuTi-Regular,serif;">
                 <button class="cssbuttons-io-button" @click="nextQuestion"
                         v-if="currentQuestionIndex < questionsConciseVersion.questionList.length-1">
                     下一题
@@ -259,8 +259,8 @@ export default {
     position: absolute;
     width: 50px;
     height: 50px;
-    top: 30px;
-    left: 40px;
+    top: 10px;
+    left: 20px;
     border-radius: 50%;
     background: linear-gradient(145deg, #ffffff, #e6e6e6);
     box-shadow: 20px 20px 60px #d9d9d9,
@@ -291,6 +291,8 @@ export default {
 }
 
 .button {
+  margin-bottom: 5px;
+  margin-top: 5px;
     --color: #00a982;
     padding: 0.8em 1.7em;
     background-color: transparent;

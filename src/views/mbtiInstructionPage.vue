@@ -186,7 +186,8 @@ export default {
 
 .display {
     position: relative;
-    left: 10%;
+    margin-left: 8%;
+    margin-right: 8%;
     top: 50px;
     width: 90%;
     height: 1000px;

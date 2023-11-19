@@ -76,7 +76,8 @@ export default {
           let EIvalue=0,NSvalue=0,FTvalue=0,JPvalue=0
           for (let eachAnswer of store.Scores) {
             if(eachAnswer.valid===0){
-              this.isModalVisible=true
+              this.isModalVisible = true
+                store.ishidden = 0
               break
             }else if(eachAnswer.dimension==="E/I"){
               EIvalue+=eachAnswer.value
@@ -89,7 +90,8 @@ export default {
             }
           }
           let type=""
-          if(this.isModalVisible===false){
+
+            if(this.isModalVisible===false){
             if(EIvalue>0){
               type+='e'
             }else{

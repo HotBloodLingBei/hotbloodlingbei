@@ -90,7 +90,7 @@ export default {
     width: 2em;
     height: 2em;
     right: 0px; /* 调整左侧距离 */
-    top: 10%; /* 垂直居中 */
+    top: 1%; /* 垂直居中 */
 }
 
 .hidden {
@@ -100,7 +100,6 @@ export default {
 
 .close-icon {
     margin-left: 80%;
-
     cursor: pointer;
     width: 1em;
     height: 1em;
@@ -111,7 +110,7 @@ export default {
     flex-direction: column;
     position: fixed;
     right: 20px; /* 调整左侧距离 */
-    top: 10%; /* 垂直居中 */
+    top: 8%; /* 垂直居中 */
     background: #ffffff;
     box-shadow: 0 0 10px #ccc;
     padding: 5px;

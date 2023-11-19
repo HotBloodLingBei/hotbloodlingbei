@@ -134,7 +134,7 @@ export default {
 </script>
 
 <template>
-    <div style="padding: 5%">
+    <div style="padding: 5% ">
       <!--          题目容器-->
         <div class="questionContainer">
           <!--          左上角题号-->
@@ -175,7 +175,7 @@ export default {
             </div>
         </div>
         <!--按钮容器-->
-        <div class="button-container" style=" align-items: center;justify-content: space-between;display: flex;">
+        <div class="button-container" style=" align-items: center;justify-content: space-between;display: flex;flex-wrap: wrap;">
             <!--上一题的按钮-->
             <div style="height: 60px; width:60px">
                 <button class="button1" @click="lastQuestion" v-if="currentQuestionIndex > 0">
@@ -203,8 +203,8 @@ export default {
             </div>
             <!--下一题的按钮-->
 
-            <div style="height: 60px; width: 400px; display: flex;align-items: center;font-family: LongZhuTi-Regular,serif;">
-                <button class="cssbuttons-io-button" @click="nextQuestion"
+            <div style="height: 60px; width: 130px; display: flex;align-items: center;font-family: LongZhuTi-Regular,serif;">
+                <button class="cssbuttons-io-button" @click="nextQuestion" style=" font-size: 15px;"
                         v-if="currentQuestionIndex < questionsConciseVersion.questionList.length-1">
                     下一题
                     <div class="icon">
@@ -223,7 +223,7 @@ export default {
                     </div>
                 </button>
             </div>
-          <div class="bookmarkBtn" @click="changeTableVisible" style="color: white;">题表</div>
+          <div class="bookmarkBtn " @click="changeTableVisible" style="color: white;font-weight: bold;">题表</div>
             <!--提交按钮-->
             <div style="font-family: LongZhuTi-Regular,serif;height: 60px; width: 100px; display: flex;align-items: center;">
                 <button class="shadow__btn" @click="handleSubmit"
@@ -262,8 +262,8 @@ export default {
     font-family: P-2, serif;
     font-size: 1.5em;
     position: absolute;
-    width: 50px;
-    height: 50px;
+  width: 25px;
+  height: 25px;
     top: 10px;
     left: 20px;
     border-radius: 50%;
@@ -559,6 +559,5 @@ export default {
     transition: .4s;
     transform: translateX(-56px);
 }
-
 
 </style>

@@ -158,7 +158,7 @@ export default {
             </div>
         </div>
         <!--按钮容器-->
-        <div style="font-family: LongZhuTi-Regular,serif; align-items: center;justify-content: space-between;display: flex;">
+        <div style="font-family: LongZhuTi-Regular,serif; align-items: center;justify-content: space-between;display: flex;flex-wrap: wrap;">
             <!--上一题的按钮-->
             <div style="height: 60px; width:60px">
                 <button class="button1" @click="lastQuestion" v-if="currentQuestionIndex > 0">
@@ -186,8 +186,8 @@ export default {
             </div>
 
             <!--下一题的按钮-->
-            <div style="height: 60px; width: 400px; display: flex;align-items: center;">
-                <button class="cssbuttons-io-button" @click="nextQuestion"
+            <div style="height: 60px; width: 130px; display: flex;align-items: center;">
+                <button class="cssbuttons-io-button" @click="nextQuestion " style=" font-size: 15px;"
                         v-if="currentQuestionIndex < questionsAccurateVersion.questionList.length-1">
                     下一题
                     <div class="icon">

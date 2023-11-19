@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="imgContainer">
-        <button class="responsive-button"
+        <button class="responsive-button" :style="{height:isMobile ? '100%' : '50px' , width: isMobile ? '20%' : '140px'}"
                 @click="handleJump">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                 <path fill="none" d="M0 0h24v24H0z"></path>
@@ -92,7 +92,6 @@
     margin-top: 1em;
     margin-bottom: 1.5em;
     width: 20%;
-    height: 100%;
     object-fit: contain;
     justify-content: center;
     align-items: center;
@@ -155,6 +154,7 @@ button:hover span {
 button:active {
     filter: brightness(.8);
 }
+
 </style>
 
 <script>
@@ -162,6 +162,7 @@ import store from '@/store/store.js'
 import questionsConciseVersion from '@/data/questionsConciseVersion.js'
 import questionsAccurateVersion from "@/data/questionsAccurateVersion"
 import MyModal from "@/components/MyModal.vue";
+var userAgent = navigator.userAgent;
 
 export default {
     name: "chooseTest",
@@ -182,6 +183,8 @@ export default {
             logoSrc: require('../assets/mbti.jpg'),
             // true会产生提示框
             isModalVisible: false,
+
+            isMobile: !/Mobile||Android||iPhone||iPod||BlackBerry||IEMobile||Opera Mini/i.test(userAgent)
         };
     },
     methods: {
